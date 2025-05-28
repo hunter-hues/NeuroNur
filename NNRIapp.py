@@ -1,14 +1,14 @@
 
 import streamlit as st
 
-# ✅ This must come first!
-st.set_page_config(page_title="NeuroNoor", page_icon="🧠", layout="centered")
-
-# ✅ Now you can safely apply the white background
 st.markdown("""
     <style>
         .stApp {
             background-color: white;
+            color: black;
+        }
+        h1, h2, h3, h4, h5, h6, p, div {
+            color: black !important;
         }
     </style>
 """, unsafe_allow_html=True)
