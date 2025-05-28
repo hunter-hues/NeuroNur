@@ -1,6 +1,19 @@
 
 import streamlit as st
 
+# Apply light theme manually (Streamlit Cloud uses your browser theme unless overridden)
+st.markdown("""
+    <style>
+        .stApp {
+            background-color: white;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Page config
+st.set_page_config(page_title="NeuroNoor", page_icon="🧠", layout="centered")
+
+
 # --- Page Config ---
 st.set_page_config(page_title="NeuroNoor", page_icon="🧠", layout="centered")
 
