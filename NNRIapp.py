@@ -1,7 +1,10 @@
 
 import streamlit as st
 
-# Apply light theme manually (Streamlit Cloud uses your browser theme unless overridden)
+# ✅ This must come first!
+st.set_page_config(page_title="NeuroNoor", page_icon="🧠", layout="centered")
+
+# ✅ Now you can safely apply the white background
 st.markdown("""
     <style>
         .stApp {
@@ -10,20 +13,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Page config
-st.set_page_config(page_title="NeuroNoor", page_icon="🧠", layout="centered")
-
-
-# --- Page Config ---
-st.set_page_config(page_title="NeuroNoor", page_icon="🧠", layout="centered")
-
 # --- Logo ---
-st.image("logo.png", width=150)  # Make sure to upload your logo as 'logo.png' to your GitHub repo
+st.image("logo.png", width=150)
 
 # --- Header ---
 st.title("NeuroNoor")
 st.subheader("Advancing neuroscience in Saudi Arabia through global collaboration 🌍")
-
 # --- Mission ---
 st.markdown("### 🌿 Mission")
 st.write(
