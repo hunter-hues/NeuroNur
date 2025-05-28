@@ -17,7 +17,7 @@ st.markdown("""
 st.image("logo.png", width=150)
 
 # --- Header ---
-st.title("NeuroNoor Reaserch Initiative")
+st.title("NeuroNoor  Initiative")
 st.subheader("Advancing neuroscience research through global collaboration 🌍")
 # --- Mission ---
 st.markdown("### 🌿 Mission")
