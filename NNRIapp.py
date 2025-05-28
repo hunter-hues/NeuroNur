@@ -17,12 +17,12 @@ st.markdown("""
 st.image("logo.png", width=150)
 
 # --- Header ---
-st.title("NeuroNoor Research Initiative")
+st.title("NeuroNur Research Initiative")
 st.subheader("Advancing neuroscience research through global collaboration 🌍")
 # --- Mission ---
 st.markdown("### 🌿 Mission")
 st.write(
-    "NeuroNoor is a volunteer-based research initiative dedicated to advancing neuroscience "
+    "NeuroNur is a volunteer-based research initiative dedicated to advancing neuroscience "
     "in Saudi Arabia by fostering global collaboration. We provide a platform for Saudi researchers "
     "to connect with scientists worldwide, co-design neuroscience studies, and contribute to meaningful discoveries."
 )
@@ -50,4 +50,4 @@ st.info(
 
 # --- Footer ---
 st.markdown("---")
-st.caption("© 2025 NeuroNoor | Built with 💚 by volunteers worldwide")
+st.caption("© 2025 NeuroNur | Built with 💚 by volunteers worldwide")
