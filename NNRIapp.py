@@ -30,8 +30,9 @@ st.write(
 # --- Vision ---
 st.markdown("### 🌌 Vision")
 st.write(
-    "To build a globally connected neuroscience community where Saudi researchers lead and contribute "
-    "to cutting-edge discoveries, foster open science, and inspire the next generation."
+    "To build a globally connected neuroscience community where Saudi researchers lead and contribute"
+    "to cutting-edge discoveries, foster open science, and inspire the next generation of innovators dedicated"
+    "to understanding the brain and improving lives."
 )
 
 # --- Join Us ---
