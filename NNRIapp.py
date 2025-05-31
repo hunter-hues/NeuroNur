@@ -4,11 +4,14 @@ import streamlit as st
 st.markdown("""
     <style>
         .stApp {
-            background-color: white;
-            color: black;
+            background-color: #2e6259;
+            color: white;
         }
         h1, h2, h3, h4, h5, h6, p, div {
-            color: black !important;
+            color: white !important;
+        }
+        .css-1d391kg, .css-ffhzg2, .css-1v3fvcr {
+            color: white !important;
         }
     </style>
 """, unsafe_allow_html=True)
