@@ -25,9 +25,9 @@ st.subheader("Advancing neuroscience research through global collaboration 🌍"
 # --- Mission ---
 st.markdown("### 🌿 Mission")
 st.write(
-    "NeuroNur is a volunteer-based research initiative dedicated to advancing neuroscience "
-    "in Saudi Arabia by fostering global collaboration. We provide a platform for Saudi researchers "
-    "to connect with scientists worldwide, co-design neuroscience studies, and contribute to meaningful discoveries."
+    "Advancing neuroscience research through global collaboration and open data. "
+    "NeuroNur is a volunteer-based initiative empowering Saudi scientists to lead innovative neuroscience research "
+    "by connecting with global collaborators, designing impactful studies, and fostering a culture of data sharing and transparency."
 )
 
 # --- Vision ---
