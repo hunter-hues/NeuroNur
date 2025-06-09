@@ -39,7 +39,7 @@ Our vision is to build a dynamic and globally connected neuroscience community t
 st.markdown("### ✨ Join Us")
 st.write("""
 We're building a team of researchers, students, and volunteers! If you're interested in collaborating 
-on neuroscience, data analysis, or outreach, [click here to apply](https://forms.gle/your-google-form-link).
+on neuroscience, data analysis, or outreach, [click here to apply](https://forms.gle/2b6vWDU2vdgSbuGw7).
 """)
 
 # --- Projects ---
@@ -47,7 +47,7 @@ st.markdown("### 🔬 Our First Project")
 st.info("Launching July 2025 – Topic: TBD (details coming soon!)")
 
 # --- Section: Clickable Tabs for Info ---
-st.markdown("💡 Learn More About NeuroNur")
+st.markdown("💡 ### Learn More About NeuroNur")
 
 tab1, tab2, tab3 = st.tabs(["🌱 Why We Started", "🙌 Volunteering", "🔬 Our Projects"])
 
