@@ -17,7 +17,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Logo ---
-st.image("logo.jpeg", width=150)
+st.image("NNlogo.jpg", width=150)
 
 # --- Header ---
 st.title("NeuroNur Research Initiative NNRI")
