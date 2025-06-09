@@ -24,44 +24,61 @@ st.title("NeuroNur Research Initiative NNRI")
 st.subheader("Advancing neuroscience through global collaboration and open data 🌍")
 
 # --- Why We Started NeuroNur ---
-st.markdown("## 🌱 Why We Started NeuroNur")
-st.write("""
-NeuroNur was born out of a deep passion for neuroscience and a belief in the power of collaboration. 
-Many aspiring researchers—especially in regions with limited resources—face barriers to participating 
-in impactful research. We wanted to change that.
-
-Our goal is to create an inclusive and supportive platform where individuals from all backgrounds 
-can contribute meaningfully to neuroscience. Whether you're a student, early-career scientist, or 
-seasoned researcher, NeuroNur is a space to learn, grow, and make a difference—together.
-""")
+st.markdown("""
+    <div style='background-color:#f9f9f9; padding:20px; border-radius:12px; margin-bottom:20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);'>
+        <h3>🌱 Why We Started NeuroNur</h3>
+        <p>
+        NeuroNur was born out of a deep passion for neuroscience and a belief in the power of collaboration. 
+        Many aspiring researchers—especially in regions with limited resources—face barriers to participating 
+        in impactful research. We wanted to change that.
+        </p>
+        <p>
+        Our goal is to create an inclusive and supportive platform where individuals from all backgrounds 
+        can contribute meaningfully to neuroscience. Whether you're a student, early-career scientist, or 
+        seasoned researcher, NeuroNur is a space to learn, grow, and make a difference—together.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
 # --- How Volunteering Works ---
-st.markdown("## 🙌 How Volunteering Works")
-st.write("""
-Volunteering with NeuroNur is flexible and meaningful. You can contribute based on your availability 
-and skills. Opportunities include:
-
-- 💻 Assisting with data analysis or visualization  
-- ✍️ Helping write or review research proposals and papers  
-- 🎙️ Supporting outreach, events, and science communication  
-- 🔬 Joining project teams to co-design experiments  
-
-Whether you’re technical, creative, or just curious—we welcome your energy and ideas!
-""")
+st.markdown("""
+    <div style='background-color:#f9f9f9; padding:20px; border-radius:12px; margin-bottom:20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);'>
+        <h3>🙌 How Volunteering Works</h3>
+        <p>
+        Volunteering with NeuroNur is flexible and meaningful. You can contribute based on your availability 
+        and skills. Opportunities include:
+        </p>
+        <ul>
+            <li>💻 Assisting with data analysis or visualization</li>
+            <li>✍️ Helping write or review research proposals and papers</li>
+            <li>🎙️ Supporting outreach, events, and science communication</li>
+            <li>🔬 Joining project teams to co-design experiments</li>
+        </ul>
+        <p>
+        Whether you’re technical, creative, or just curious—we welcome your energy and ideas!
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
 # --- What Our Projects Look Like ---
-st.markdown("## 🔬 What Our Projects Look Like")
-st.write("""
-Our projects follow a collaborative model designed to include a range of contributors:
-
-1. **Ideation**: A research question is proposed by anyone in the community.  
-2. **Co-Design**: Volunteers help develop a review and experiment design around the idea.  
-3. **Partnerships**: We collaborate with labs (starting in Saudi Arabia) to conduct the experiments.  
-4. **Data Sharing**: Once collected, data is shared openly for further analysis.  
-5. **Publication**: Teams co-author papers and publish findings together.
-
-Our goal is to make science accessible, transparent, and truly collaborative.
-""")
+st.markdown("""
+    <div style='background-color:#f9f9f9; padding:20px; border-radius:12px; margin-bottom:20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);'>
+        <h3>🔬 What Our Projects Look Like</h3>
+        <p>
+        Our projects follow a collaborative model designed to include a range of contributors:
+        </p>
+        <ol>
+            <li><strong>Ideation</strong>: A research question is proposed by anyone in the community.</li>
+            <li><strong>Co-Design</strong>: Volunteers help develop a review and experiment design around the idea.</li>
+            <li><strong>Partnerships</strong>: We collaborate with labs (starting in Saudi Arabia) to conduct the experiments.</li>
+            <li><strong>Data Sharing</strong>: Once collected, data is shared openly for further analysis.</li>
+            <li><strong>Publication</strong>: Teams co-author papers and publish findings together.</li>
+        </ol>
+        <p>
+        Our goal is to make science accessible, transparent, and truly collaborative.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
 
 # --- Mission ---
