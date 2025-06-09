@@ -64,7 +64,7 @@ with tab1:
     """)
 
 with tab2:
-    st.markdown("# 🙌 How Volunteering Works")
+    st.markdown("### 🙌 How Volunteering Works")
     st.write("""
     Volunteering with NeuroNur is flexible and meaningful. You can contribute based on your availability 
     and skills. Opportunities include:
@@ -84,7 +84,7 @@ with tab3:
 
     1. **Ideation**: A research question is proposed by anyone in the community.  
     2. **Co-Design**: Volunteers help develop a review and experiment design around the idea.  
-    3. **Partnerships**: We collaborate with labs (starting in Saudi Arabia) to conduct the experiments.  
+    3. **Partnerships**: We collaborate with labs to conduct the experiments.  
     4. **Data Sharing**: Once collected, data is shared openly for further analysis.  
     5. **Publication**: Teams co-author papers and publish findings together.
 
