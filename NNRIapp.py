@@ -47,7 +47,7 @@ st.markdown("### 🔬 Our First Project")
 st.info("Launching July 2025 – Topic: TBD (details coming soon!)")
 
 # --- Section: Clickable Tabs for Info ---
-st.markdown("💡 ### Learn More About NeuroNur")
+st.markdown("### 💡 Learn More About NeuroNur")
 
 tab1, tab2, tab3 = st.tabs(["🌱 Why We Started", "🙌 Volunteering", "🔬 Our Projects"])
 
