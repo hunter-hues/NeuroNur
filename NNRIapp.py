@@ -21,7 +21,7 @@ st.image("NNlogo.jpg", width=150)
 
 # --- Header ---
 st.title("NeuroNur Research Initiative NNRI")
-st.markdown("_Advancing neuroscience through global collaboration and open data 🌍_", unsafe_allow_html=True)
+st.markdown("###_Advancing neuroscience through global collaboration and open data 🌍_", unsafe_allow_html=True)
 
 # --- Mission ---
 st.markdown("### 🌿 **Mission**")
