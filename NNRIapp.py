@@ -21,7 +21,50 @@ st.image("logo.jpeg", width=150)
 
 # --- Header ---
 st.title("NeuroNur Research Initiative NNRI")
-st.subheader("Advancing neuroscience research through global collaboration 🌍")
+st.subheader("Advancing neuroscience through global collaboration and open data 🌍")
+
+# --- Why We Started NeuroNur ---
+st.markdown("### 🌱 Why We Started NeuroNur")
+with st.expander("Click to read more"):
+    st.write("""
+    NeuroNur was born out of a deep passion for neuroscience and a belief in the power of collaboration. 
+    Many aspiring researchers around the world—especially in regions with limited resources—face barriers 
+    to participating in impactful research. We wanted to change that.
+
+    Our goal is to create an inclusive and supportive platform where individuals from all backgrounds 
+    can contribute meaningfully to neuroscience. Whether you're a student, early-career scientist, or 
+    seasoned researcher, NeuroNur is a space to learn, grow, and make a difference—together.
+    """)
+
+# --- What Volunteering Looks Like ---
+st.markdown("### 🙌 How Volunteering Works")
+with st.expander("Click to see what volunteering looks like"):
+    st.write("""
+    Volunteering with NeuroNur is flexible and meaningful. You can contribute based on your availability 
+    and skills. Opportunities include:
+
+    - 💻 Assisting with data analysis or visualization  
+    - ✍️ Helping write or review research proposals and papers  
+    - 🎙️ Supporting outreach, events, and science communication  
+    - 🔬 Joining project teams to co-design experiments  
+
+    Whether you’re technical, creative, or just curious—we welcome your energy and ideas!
+    """)
+
+# --- What Our Projects Look Like ---
+st.markdown("### 🔬 What Our Projects Look Like")
+with st.expander("Click to explore our research model"):
+    st.write("""
+    Our projects follow a collaborative model designed to include a range of contributors:
+
+    1. **Ideation**: A research question is proposed by anyone in the community.
+    2. **Co-Design**: Volunteers help develop a review and experiment design around the idea.
+    3. **Partnerships**: We collaborate with labs (starting in Saudi Arabia) to conduct the experiments.
+    4. **Data Sharing**: Once collected, data is shared openly for further analysis.
+    5. **Publication**: Teams co-author papers and publish findings together.
+
+    Our goal is to make science accessible, transparent, and truly collaborative.
+    """)
 
 # --- Mission ---
 st.markdown("### 🌿 **Mission**")
