@@ -1,4 +1,5 @@
-//Waits for page to load before running
+emailjs.init('Q4xjtELSUhXxf30kr');
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded successfully!');
     if (window.innerWidth <= 1000) {
@@ -86,4 +87,27 @@ window.addEventListener('resize', function() {
     } else {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
     }
+});
+
+let form = document.querySelector('form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    let name = form.elements.name.value;
+    let email = form.elements.email.value;
+    let message = form.elements.message.value;
+
+    emailjs.send('service_y40kc5p', 'template_1j8f96j', {
+        name: name,
+        email: email, 
+        message: message
+    })
+    .then(function(response) {
+        document.getElementById('success-message').style.display = 'block';
+        document.getElementById('error-message').style.display = 'none';
+        form.reset();
+    })
+    .catch(function(error) {
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('success-message').style.display = 'none';
+    });
 });
