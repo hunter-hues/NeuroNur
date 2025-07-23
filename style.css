@@ -63,6 +63,7 @@ footer {
     justify-content:left;
     align-items: center;
     width: 60%;
+    padding:
 }
 
 .navbar-left .logo {
@@ -70,6 +71,12 @@ footer {
     height: auto;
     border-radius: 25%;
     padding: 15px;
+}
+
+.navbar-left .full-title {
+    font-size: 2rem;
+    color: var(--text-light);
+    padding: 0;
 }
 
 .navbar h1 {
@@ -108,11 +115,6 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--background);
-}
-
-.full-title {
-    font-size: 2rem;
-    color: var(--text-light);
 }
 
 h2 {
@@ -255,8 +257,8 @@ footer {
     }
 
     .navbar {
-        height: 80px;
-        padding: 0 10px;
+        height: clamp(80px, 15vw, 100px);
+        padding: 0;
     }
 
     .navbar-left {
@@ -264,12 +266,13 @@ footer {
     }
 
     .navbar-left .logo {
-        width:  clamp(80px, 1vw, 100px);
-        padding: 10px;
+        width:  clamp(80px, 15vw, 100px);
+        padding: 15px;
     }
     
     .navbar .full-title {
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        padding: 5px;
     }
     
     .navbar-right {
@@ -279,7 +282,7 @@ footer {
     
     .navbar-right a {
         padding: 4px 0 4px;
-        font-size: clamp(0.7rem, 2.2vw, 1.1rem);
+        font-size: clamp(0.5rem, 2.2vw, 1.3rem);
     }
 }
 
