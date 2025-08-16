@@ -2,7 +2,7 @@ emailjs.init('Q4xjtELSUhXxf30kr');
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded successfully!');
-    if (window.innerWidth <= 1000) {
+    if (window.innerWidth <= 1100) {
         document.querySelector('.full-title').textContent = 'NeuroNur';
     } else {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
@@ -82,7 +82,7 @@ let resizeTimeout;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(updateTabContentHeight, 250);
-    if (window.innerWidth <= 1000) {
+    if (window.innerWidth <= 1100) {
         document.querySelector('.full-title').textContent = 'NeuroNur';
     } else {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
