@@ -23,7 +23,7 @@ main {
     max-width: 90%;
     margin: 0 auto;
     padding: 10px;
-    padding-top: 110px;
+    padding-top: 130px;
 }
 
 footer {
@@ -32,11 +32,12 @@ footer {
 
 .content-section {
     border: 1px solid var(--borders-highlights);
-    margin: 20px 0;
+    margin: 20px 0 200px 0;
     padding: 25px;
     background-color: var(--content-background);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    scroll-margin-top: 120px; 
 }
 
 .content-section:hover {
@@ -61,13 +62,17 @@ footer {
     background: var(--navigation);
     border-bottom: 2px solid var(--borders-highlights);
     box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    overflow: visible;
 }
 
 .navbar-left {
     display: flex;
     justify-content:left;
     align-items: center;
-    width: 60%;
+    width: auto;
+    flex-shrink: 1;
+    min-width: 0;
+    max-width: 60%;
 }
 
 .navbar-left .logo {
@@ -89,13 +94,17 @@ footer {
 
 .navbar-right {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     background: var(--navigation);
     height: 100%;
     padding: 10px;
     width: auto;
     color: var(--main-text);
+    overflow: visible;
+    flex-shrink: 0;
+    flex-grow: 1;
+    min-width: 0;
 }
 
 .navbar-right a {
@@ -106,6 +115,23 @@ footer {
 }
 
 .navbar-right a:hover {
+    background: var(--call-to-action-buttons);
+    color: var(--main-text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.nav-items a {
+    color: var(--main-text);
+    padding: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.nav-items a:hover {
     background: var(--call-to-action-buttons);
     color: var(--main-text);
     box-shadow: 0 2px 8px rgba(0, 0, 0, .2);
@@ -288,6 +314,11 @@ footer {
         padding: 4px 0 4px;
         font-size: clamp(0.5rem, 2.2vw, 1.3rem);
     }
+    
+    .nav-items a {
+        padding: 4px 0 4px;
+        font-size: clamp(0.5rem, 2.2vw, 1.3rem);
+    }
 }
 
 #Contact-Us form {
@@ -375,4 +406,69 @@ footer {
 .linkedin-link:hover {
     color: var(--links-accents);
     text-decoration: underline;
+}
+
+.nav-items {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.nav-dropdown {
+    position: relative;
+    display: block;
+    padding: 10px;
+}
+
+.dropdown-toggle {
+    background: var(--call-to-action-buttons);
+    color: var(--main-text);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 10px;
+}
+
+.dropdown-toggle:hover {
+    background: var(--links-accents);
+    color: var(--content-background);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--navigation);
+    border: 1px solid var(--borders-highlights);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .3);
+    min-width: 150px;
+    display: none;
+    z-index: 10000;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--main-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--borders-highlights);
+}
+
+.dropdown-menu a:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+    background: var(--call-to-action-buttons);
 }

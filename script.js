@@ -2,11 +2,12 @@ emailjs.init('Q4xjtELSUhXxf30kr');
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded successfully!');
-    if (window.innerWidth <= 1100) {
+    if (window.innerWidth <= 1200) {
         document.querySelector('.full-title').textContent = 'NeuroNur';
     } else {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
     }
+    updateNavigation();
 });
 
 window.addEventListener('scroll', function() {
@@ -81,8 +82,11 @@ function updateTabContentHeight() {
 let resizeTimeout;
 window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(updateTabContentHeight, 250);
-    if (window.innerWidth <= 1100) {
+    resizeTimeout = setTimeout(function() {
+        updateTabContentHeight();
+    }, 250);
+    updateNavigation();
+    if (window.innerWidth <= 1200) {
         document.querySelector('.full-title').textContent = 'NeuroNur';
     } else {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
@@ -111,3 +115,59 @@ form.addEventListener('submit', function(event) {
         document.getElementById('success-message').style.display = 'none';
     });
 });
+
+// Add responsive navigation functionality
+function updateNavigation() {
+    const navItemsContainer = document.querySelector('.nav-items');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    
+    if (!navItemsContainer || !dropdownMenu || !dropdownToggle) {
+        return;
+    }
+    
+    // Show dropdown at 840px and below
+    if (window.innerWidth <= 840) {
+        // Move all items to dropdown
+        const allItems = [...navItemsContainer.children, ...dropdownMenu.children];
+        allItems.forEach(item => dropdownMenu.appendChild(item));
+        dropdownToggle.style.display = 'block';
+    } else {
+        // Move all items back to nav-items
+        const allItems = [...navItemsContainer.children, ...dropdownMenu.children];
+        allItems.forEach(item => navItemsContainer.appendChild(item));
+        dropdownToggle.style.display = 'none';
+    }
+}
+
+// Toggle dropdown menu
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('dropdown-toggle')) {
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        dropdownMenu.classList.toggle('show');
+    } else {
+        // Close dropdown when clicking elsewhere
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        if (dropdownMenu) {
+            dropdownMenu.classList.remove('show');
+        }
+    }
+});
+
+// Smooth scrolling with navbar offset
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const navbarHeight = 100; // Height of your navbar
+            const targetPosition = target.offsetTop - navbarHeight - 20;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    });
+});
+
