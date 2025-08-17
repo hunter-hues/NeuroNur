@@ -249,7 +249,7 @@ footer {
 
 @media (max-width: 700px) {
     .content-section {
-        margin: 15px 0;
+        margin: 15px 0, 100px;
         padding: 20px;
     }
 
@@ -471,4 +471,41 @@ footer {
 
 .dropdown-menu a:hover {
     background: var(--call-to-action-buttons);
+}
+
+/* For rotated images */
+.rotated-full-image {
+    transform: rotate(-90deg);
+    width: 30%;
+    height: auto;
+    margin: 0 auto 200px auto;
+    border: 1px solid var(--secondary-text);
+    background-color: var(--content-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rotated-full-image:hover {
+    transform: rotate(-90deg) scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .4);
+}
+
+/* For regular (non-rotated) images */
+.full-image {
+    width: 30%;
+    height: auto;
+    margin: 0 auto 200px auto;
+    border: 1px solid var(--secondary-text);
+    background-color: var(--content-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.full-image:hover {
+    transform: scale(1.02); /* Just scale, no rotation */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .4);
 }
