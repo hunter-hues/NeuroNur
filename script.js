@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
     }
     updateNavigation();
+    handleScrollFade(); // Run once on load
 });
 
 window.addEventListener('scroll', function() {
@@ -16,6 +17,7 @@ window.addEventListener('scroll', function() {
     } else {
         this.document.querySelector('.navbar').classList.remove('scrolled');
     }
+    handleScrollFade(); // Add fade functionality to scroll
 });
 
 const tabButtons = document.querySelectorAll('.tab-button');
@@ -170,4 +172,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Fade in on scroll
+function handleScrollFade() {
+    const sections = document.querySelectorAll('.content-section');
+    
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionVisible = 150; // Trigger when 150px from top
+        
+        if (sectionTop < window.innerHeight - sectionVisible) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    });
+}
 

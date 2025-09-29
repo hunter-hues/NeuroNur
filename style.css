@@ -2,6 +2,18 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 :root {
     --background: #ffffff;
     --main-text: #000000;
@@ -32,13 +44,27 @@ footer {
 }
 
 .content-section {
-    margin: 40px 0;
+    margin: 40px auto;
     padding: 24px; 
     background-color: transparent;
     border: none;
     box-shadow: none;
     scroll-margin-top: 120px;
     border-radius: 8px;
+    max-width: 70%;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.6s ease forwards;
+}
+
+#home {
+    text-align: center;
 }
 
 .content-section > :first-child { margin-top: 0; }
@@ -64,7 +90,7 @@ footer {
     z-index: 1000;
     height: 100px;
     background: var(--navigation);
-    border-bottom: 2px solid var(--borders-highlights);
+    border-bottom: 2px solid #088030;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
     overflow: visible;
 }
@@ -572,6 +598,25 @@ footer p {
     flex-direction: column;
     justify-content: center; 
     gap: 12px;
+    padding: 50px;
+}
+
+@media (max-width: 1700px) {
+    .content-section {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 1300px) {
+    .content-section {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 1100px) {
+    .content-section {
+        max-width: 100%;
+    }
 }
 
 @media (max-width: 900px) {
@@ -590,6 +635,21 @@ footer p {
     .media-block .media img {
         max-width: 60%;
         transform: rotate(-90deg)
+    }
+    .content-section {
+        max-width: 80%;
+    }
+    .media-block .content{
+        padding: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-section {
+        max-width: 100%;
+    }
+    .media-block .content{
+        padding: 10px;
     }
 }
 
