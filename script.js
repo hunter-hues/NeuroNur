@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.full-title').textContent = 'NeuroNur Research Initiative';
     }
     updateNavigation();
-    handleScrollFade(); // Run once on load
+    handleScrollFade();
 });
 
 window.addEventListener('scroll', function() {
@@ -17,7 +17,7 @@ window.addEventListener('scroll', function() {
     } else {
         this.document.querySelector('.navbar').classList.remove('scrolled');
     }
-    handleScrollFade(); // Add fade functionality to scroll
+    handleScrollFade(); 
 });
 
 const tabButtons = document.querySelectorAll('.tab-button');
@@ -188,4 +188,99 @@ function handleScrollFade() {
         }
     });
 }
+
+// Project Modal Functionality
+const projectData = {
+    'project-1': {
+        title: 'Lorem Ipsum Research Initiative',
+        content: `
+            <h2>🔬 Lorem Ipsum Research Initiative</h2>
+            
+            <h3>Project Overview</h3>
+            <p>A collaborative research project exploring innovative approaches in neuroscience. This initiative brings together researchers from around the world to advance our understanding of the brain through open science and data sharing.</p>
+            
+            <h3>Purpose</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            
+            <h3>Scope</h3>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <ul>
+                <li>Human studies and biomarker analysis</li>
+                <li>Cross-institutional collaboration</li>
+                <li>Open data sharing and transparency</li>
+                <li>Global research partnerships</li>
+            </ul>
+            
+            <h3>Timeline</h3>
+            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            
+            <h3>Team & Collaboration</h3>
+            <p>This project is driven by a diverse team of volunteers, researchers, and students from around the globe. We welcome contributors with backgrounds in neuroscience, data science, clinical research, and more.</p>
+            
+            <h3>Get Involved</h3>
+            <p>Interested in contributing to this project? We're always looking for passionate collaborators. <a href="#contact">Contact us</a> to learn more about how you can get involved.</p>
+        `
+    }
+};
+
+function openProjectModal(projectId) {
+    const modal = document.getElementById('projectModal');
+    const modalContent = document.getElementById('modalContent');
+    
+    // Get project data
+    const project = projectData[projectId];
+    
+    if (project) {
+        // Insert project content
+        modalContent.innerHTML = project.content;
+        
+        // Show modal
+        modal.classList.add('show');
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    
+    // Hide modal
+    modal.classList.remove('show');
+    
+    // Restore body scroll
+    document.body.style.overflow = 'auto';
+}
+
+// Event listeners for Learn More buttons
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('learn-more-btn')) {
+        const projectId = e.target.getAttribute('data-project-id');
+        openProjectModal(projectId);
+    }
+});
+
+// Event listener for modal close button
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-close')) {
+        closeProjectModal();
+    }
+});
+
+// Close modal when clicking on backdrop
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+        closeProjectModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('projectModal');
+        if (modal.classList.contains('show')) {
+            closeProjectModal();
+        }
+    }
+});
 

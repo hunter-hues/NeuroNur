@@ -118,28 +118,24 @@
                         </div>
                         <div class="tab-content">
                             <div class="tab-panel active" id="project-1">
-                                <h4>🔬 Lorem Ipsum Research Initiative</h4>
-                                
-                                <div class="project-details">
-                                    <div class="project-field">
-                                        <h5>Purpose</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <div class="project-preview">
+                                    <div class="project-preview-image">
+                                        <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/Brain.jpeg" alt="Lorem Ipsum Research Initiative">
                                     </div>
-                                    
-                                    <div class="project-field">
-                                        <h5>Scope</h5>
-                                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    </div>
-                                    
-                                    <div class="project-field">
-                                        <h5>Timeline</h5>
-                                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <div class="project-preview-text">
+                                        <h4>🔬 Lorem Ipsum Research Initiative</h4>
+                                        <p>A collaborative research project exploring innovative approaches in neuroscience. This initiative brings together researchers from around the world to advance our understanding of the brain through open science and data sharing.</p>
+                                        <button class="learn-more-btn" data-project-id="project-1">Learn More</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="tab-panel" id="project-2">
-                                <h4>🔬 Future Projects</h4>
-                                <p>Additional research initiatives are in development. Stay tuned for updates!</p>
+                                <div class="project-preview">
+                                    <div class="project-preview-text">
+                                        <h4>🔬 Future Projects</h4>
+                                        <p>Additional research initiatives are in development. Stay tuned for updates!</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,6 +203,16 @@
             Connect on LinkedIn
         </a>
     </footer>
+
+    <!-- Project Modal -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-container">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-content" id="modalContent">
+                <!-- Project details will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="script.js"></script>
