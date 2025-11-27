@@ -6,18 +6,42 @@
     <title>NeuroNur Research Initiative</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/NNlogo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Subsection Navigation Carousel (Desktop only) -->
+    <div id="subsection-carousel" class="subsection-carousel" style="display: none;">
+        <button class="carousel-arrow carousel-arrow-left" id="carousel-left" aria-label="Previous subsection">
+            ←
+        </button>
+        <div class="carousel-content">
+            <button class="carousel-arrow carousel-arrow-vertical carousel-arrow-up" id="carousel-up" aria-label="Previous section">
+                ↑
+            </button>
+            <span class="carousel-section-name" id="carousel-section-name">Section</span>
+            <span class="carousel-subsection-name" id="carousel-subsection-name">Subsection</span>
+            <button class="carousel-arrow carousel-arrow-vertical carousel-arrow-down" id="carousel-down" aria-label="Next section">
+                ↓
+            </button>
+        </div>
+        <button class="carousel-arrow carousel-arrow-right" id="carousel-right" aria-label="Next subsection">
+            →
+        </button>
+    </div>
+    
     <nav class="navbar">
         <div class="navbar-left">
             <img src="images/NNlogo.jpg" alt="NeuroNur Logo" class="logo"> 
-            <h1 class="full-title">NeuroNur Research Initiative</h1>
+            <h1 class="full-title">NeuroNur</h1>
         </div>
         <div class="navbar-right">
             <div class="nav-items">
                 <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#work">Our Work</a>
+                <a href="#about-1">About</a>
+                <a href="#work-1">Our Work</a>
                 <a href="#involved">Get Involved</a>
                 <a href="#community">Community</a>
                 <a href="#contact">Contact</a>
@@ -29,144 +53,226 @@
                 </div>
             </div>
         </div>
+        <div class="navbar-footer">
+            <p class="navbar-copyright">© 2025 NeuroNur</p>
+            <a href="https://www.linkedin.com/company/neuronur-research-initiative/posts/?feedView=all" target="_blank" rel="noopener" class="navbar-linkedin-link" aria-label="NeuroNur on LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 4px;">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </div>
     </nav>
     <main>
         <!-- 1. Home Section -->
         <section id="home" class="content-section">
-            <h2>NeuroNur</h2>
-            <p class="mission-statement">NeuroNur is a global, volunteer-based initiative committed to advancing neuroscience research by fostering collaboration, communication, and knowledge-sharing across borders. Our platform empowers scientists, researchers, students, and professionals from all backgrounds to connect, co-design studies, and contribute meaningfully to the field.</p>
-            
-            <h3>What We Do</h3>
-            <div class="overview-grid">
-                <div class="overview-item">
-                    <h4>🔬 Collaborative Research</h4>
-                    <p>Co-create and execute neuroscience research projects that tackle pressing scientific questions</p>
+            <div class="home-container">
+                <div class="home-left">
+                    <h2 class="home-title">
+                        <span class="title-line">Neuro</span>
+                        <span class="title-line">Nur</span>
+                    </h2>
+                    <p class="mission-statement">NeuroNur is a global, volunteer-based initiative committed to advancing neuroscience research by fostering collaboration, communication, and knowledge-sharing across borders. Our platform empowers scientists, researchers, students, and professionals from all backgrounds to connect, co-design studies, and contribute meaningfully to the field.</p>
                 </div>
-                <div class="overview-item">
-                    <h4>🤝 Mentorship & Community</h4>
-                    <p>Connect students and early-career scientists with mentors and professionals</p>
-                </div>
-                <div class="overview-item">
-                    <h4>🔗 Open Science</h4>
-                    <p>Promote transparency, data sharing, and cross-border collaboration</p>
-                </div>
-            </div>
-            
-            <div class="hero-cta">
-                <a href="#involved" class="cta-button">Join Us</a>
-                <a href="#about" class="cta-button secondary">Learn More</a>
-            </div>
-        </section>
-
-        <!-- 2. About NeuroNur Section -->
-        <section id="about" class="content-section">
-            <div class="media-block image-left">
-                <div class="media">
-                    <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(14).jpeg" alt="NeuroNur research collaboration">
-                </div>
-                <div class="content">
-                    <h2>About NeuroNur</h2>
-                    
-                    <h3>Who We Are</h3>
-                    <p>NeuroNur is a global, volunteer-driven research initiative dedicated to advancing neuroscience through open collaborations, shared knowledge, and inclusive participation. We bring together scientists, students, clinicians, data experts, and passionate individuals from around the world to co-design impactful studies and contribute to the future of brain science.</p>
-                    
-                    <h3>Why NeuroNur?</h3>
-                    <p>NeuroNur was founded on the belief that many brilliant minds remain disconnected from the research ecosystem due to limited access, geographical location, or lack of opportunity. We aim to change that by creating an inclusive platform where anyone passionate about neuroscience can belong, contribute, and grow.</p>
-                    
-                    <h3>Our Values</h3>
-                    <ul>
-                        <li><strong>Open Science:</strong> We believe in transparency and sharing knowledge</li>
-                        <li><strong>Inclusivity:</strong> Creating accessible spaces for all backgrounds</li>
-                        <li><strong>Collaboration:</strong> Fostering interdisciplinary research partnerships</li>
-                        <li><strong>Equity:</strong> Lowering barriers to research participation</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3. Our Work Section -->
-        <section id="work" class="content-section">
-            <div class="media-block image-right">
-                <div class="content">
-                    <h2>Our Work</h2>
-                    
+                <div class="home-divider"></div>
+                <div class="home-right">
                     <h3>What We Do</h3>
-                    <div class="work-areas">
-                        <div class="work-area">
-                            <h4>Collaborative Research</h4>
-                            <p>We aim to co-create and execute neuroscience research projects that tackle pressing scientific questions while providing opportunities for early-career researchers to learn and gain hands-on experience.</p>
+                    <div class="overview-grid">
+                        <div class="overview-item">
+                            <h4>🔬 Collaborative Research</h4>
+                            <p>Co-create and execute neuroscience research projects that tackle pressing scientific questions</p>
                         </div>
-                        <div class="work-area">
-                            <h4>Mentorship & Community Building</h4>
-                            <p>We aim to connect students and early-career scientists with mentors and professionals who guide, inspire, and help shape the next generation of neuroscientists.</p>
+                        <div class="overview-item">
+                            <h4>🤝 Mentorship & Community</h4>
+                            <p>Connect students and early-career scientists with mentors and professionals</p>
                         </div>
-                        <div class="work-area">
-                            <h4>Open Science & Knowledge Sharing</h4>
-                            <p>We aim to promote transparency, data sharing, and cross-border collaboration to drive scientific progress that benefits the global community.</p>
+                        <div class="overview-item">
+                            <h4>🔗 Open Science</h4>
+                            <p>Promote transparency, data sharing, and cross-border collaboration</p>
                         </div>
                     </div>
-                </div>
-                <div class="media">
-                    <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(18).jpeg" alt="Our work in neuroscience research">
+                    
+                    <div class="hero-cta">
+                        <a href="#involved" class="cta-button">Join Us</a>
+                        <a href="#about-1" class="cta-button secondary">Learn More</a>
+                    </div>
                 </div>
             </div>
-            <h3>Our Projects</h3>
-                    <div class="tab-container">
-                        <div class="tab-buttons">
-                            <button class="tab-button active" data-tab="project-1">Lorem Ipsum Project</button>
-                            <button class="tab-button" data-tab="project-2">More Projects Coming</button>
+        </section>
+
+        <!-- 2. About NeuroNur Section - Subsections (Horizontal Scroll Container) -->
+        <section class="subsection-container" data-section="about">
+            <div class="subsection-wrapper">
+                <section id="about-1" class="content-section subsection" data-section="about">
+                    <div class="media-block image-left">
+                        <div class="media">
+                            <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(14).jpeg" alt="NeuroNur research collaboration">
                         </div>
-                        <div class="tab-content">
-                            <div class="tab-panel active" id="project-1">
-                                <div class="project-preview">
-                                    <div class="project-preview-image">
-                                        <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/Brain.jpeg" alt="Lorem Ipsum Research Initiative">
-                                    </div>
-                                    <div class="project-preview-text">
-                                        <h4>🔬 Lorem Ipsum Research Initiative</h4>
-                                        <p>A collaborative research project exploring innovative approaches in neuroscience. This initiative brings together researchers from around the world to advance our understanding of the brain through open science and data sharing.</p>
-                                        <button class="learn-more-btn" data-project-id="project-1">Learn More</button>
-                                    </div>
+                        <div class="content">
+                            <h2>About NeuroNur</h2>
+                            
+                            <h3>Who We Are</h3>
+                            <p>NeuroNur is a global, volunteer-driven research initiative dedicated to advancing neuroscience through open collaborations, shared knowledge, and inclusive participation. We bring together scientists, students, clinicians, data experts, and passionate individuals from around the world to co-design impactful studies and contribute to the future of brain science.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about-2" class="content-section subsection" data-section="about">
+                    <div class="media-block image-left">
+                        <div class="media">
+                            <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(14).jpeg" alt="NeuroNur research collaboration">
+                        </div>
+                        <div class="content">
+                            <h2>About NeuroNur</h2>
+                            
+                            <h3>Why NeuroNur?</h3>
+                            <p>NeuroNur was founded on the belief that many brilliant minds remain disconnected from the research ecosystem due to limited access, geographical location, or lack of opportunity. We aim to change that by creating an inclusive platform where anyone passionate about neuroscience can belong, contribute, and grow.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about-3" class="content-section subsection" data-section="about">
+                    <div class="media-block image-left">
+                        <div class="media">
+                            <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(14).jpeg" alt="NeuroNur research collaboration">
+                        </div>
+                        <div class="content">
+                            <h2>About NeuroNur</h2>
+                            
+                            <h3>Our Values</h3>
+                            <ul>
+                                <li><strong>Open Science:</strong> We believe in transparency and sharing knowledge</li>
+                                <li><strong>Inclusivity:</strong> Creating accessible spaces for all backgrounds</li>
+                                <li><strong>Collaboration:</strong> Fostering interdisciplinary research partnerships</li>
+                                <li><strong>Equity:</strong> Lowering barriers to research participation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- 3. Our Work Section - Subsections (Horizontal Scroll Container) -->
+        <section class="subsection-container" data-section="work">
+            <div class="subsection-wrapper">
+                <section id="work-1" class="content-section subsection" data-section="work">
+                    <div class="media-block image-right">
+                        <div class="content">
+                            <h2>Our Work</h2>
+                            
+                            <h3>What We Do</h3>
+                            <div class="work-areas">
+                                <div class="work-area">
+                                    <h4>Collaborative Research</h4>
+                                    <p>We aim to co-create and execute neuroscience research projects that tackle pressing scientific questions while providing opportunities for early-career researchers to learn and gain hands-on experience.</p>
+                                </div>
+                                <div class="work-area">
+                                    <h4>Mentorship & Community Building</h4>
+                                    <p>We aim to connect students and early-career scientists with mentors and professionals who guide, inspire, and help shape the next generation of neuroscientists.</p>
+                                </div>
+                                <div class="work-area">
+                                    <h4>Open Science & Knowledge Sharing</h4>
+                                    <p>We aim to promote transparency, data sharing, and cross-border collaboration to drive scientific progress that benefits the global community.</p>
                                 </div>
                             </div>
-                            <div class="tab-panel" id="project-2">
-                                <div class="project-preview">
-                                    <div class="project-preview-text">
-                                        <h4>🔬 Future Projects</h4>
-                                        <p>Additional research initiatives are in development. Stay tuned for updates!</p>
+                        </div>
+                        <div class="media">
+                            <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(18).jpeg" alt="Our work in neuroscience research">
+                        </div>
+                    </div>
+                </section>
+
+                <section id="work-2" class="content-section subsection" data-section="work">
+                    <div class="content">
+                        <h2>Our Work</h2>
+                        
+                        <h3>Our Projects</h3>
+                        <div class="tab-container">
+                            <div class="tab-buttons">
+                                <button class="tab-button active" data-tab="project-1">Instance Segmentation Research</button>
+                                <button class="tab-button" data-tab="project-2">More Projects Coming</button>
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-panel active" id="project-1">
+                                    <div class="project-preview">
+                                        <div class="project-preview-image">
+                                            <img src="./projectImages/image (2).png" alt="Instance Segmentation for Neurological Disease Research">
+                                        </div>
+                                        <div class="project-preview-text">
+                                            <h4>🔬 Instance Segmentation for Neurological Disease Research</h4>
+                                            <p>Exploring and comparing deep learning models for instance segmentation of neurons, astrocytes, and neuroblastoma cells in brightfield microscopy images. This project aims to improve disease detection and treatment through advanced computer vision techniques.</p>
+                                            <button class="learn-more-btn" data-project-id="project-1">Learn More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-panel" id="project-2">
+                                    <div class="project-preview">
+                                        <div class="project-preview-text">
+                                            <h4>🔬 Future Projects</h4>
+                                            <p>Additional research initiatives are in development. Stay tuned for updates!</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </section>
+            </div>
         </section>
 
-        <!-- 4. Get Involved Section -->
-        <section id="involved" class="content-section">
-            <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/Brains work via their genes just as much as their neurons.jpeg" alt="Get involved header" class="section-hero">
-            <h2>Get Involved</h2>
-            <p>Whether you're a researcher, student, clinician, data scientist, or simply passionate about the brain, there's a place for you at NeuroNur.</p>
-            
-            <h3>You Can:</h3>
-            <ul>
-                <li>Volunteer in research or community roles</li>
-                <li>Mentor emerging scientists</li>
-                <li>Collaborate on global research projects</li>
-                <li>Support our mission through funding or partnership</li>
-            </ul>
-            
-            <p>We're building a team of researchers, students, and volunteers! If you're interested in collaborating on neuroscience, data analysis, or outreach, <a href="https://forms.gle/2b6vWDU2vdgSbuGw7">click here to apply</a>.</p>
+        <!-- 4. Get Involved Section - Subsections (Horizontal Scroll Container) -->
+        <section id="involved" class="subsection-container" data-section="involved">
+            <div class="subsection-wrapper">
+                <section id="involved-1" class="content-section subsection" data-section="involved">
+                    <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/Brains work via their genes just as much as their neurons.jpeg" alt="Get involved header" class="section-hero">
+                    <h2>Get Involved</h2>
+                    <p>Whether you're a researcher, student, clinician, data scientist, or simply passionate about the brain, there's a place for you at NeuroNur.</p>
+                    
+                    <h3>You Can:</h3>
+                    <ul>
+                        <li>Volunteer in research or community roles</li>
+                        <li>Mentor emerging scientists</li>
+                        <li>Collaborate on global research projects</li>
+                        <li>Support our mission through funding or partnership</li>
+                    </ul>
+                    
+                    <p>We're building a team of researchers, students, and volunteers! If you're interested in collaborating on neuroscience, data analysis, or outreach, <a href="https://forms.gle/2b6vWDU2vdgSbuGw7" target="_blank" rel="noopener noreferrer">click here to apply</a>.</p>
+                </section>
+
+                <section id="involved-2" class="content-section subsection" data-section="involved">
+                    <h2>Our Team</h2>
+                    <div class="team-carousel-container">
+                        <button class="team-carousel-arrow team-carousel-left" id="team-carousel-left" aria-label="Previous team member">←</button>
+                        <div class="team-carousel-wrapper" id="team-carousel-wrapper">
+                            <div class="team-carousel-track" id="team-carousel-track">
+                                <!-- Team members will be populated by JavaScript -->
+                            </div>
+                        </div>
+                        <button class="team-carousel-arrow team-carousel-right" id="team-carousel-right" aria-label="Next team member">→</button>
+                    </div>
+                </section>
+            </div>
         </section>
 
         <!-- 5. Community Activities Section -->
         <section id="community" class="content-section">
-            <div class="media-block image-left">
-                <div class="media">
-                    <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(16).jpeg" alt="Community activities visual" class="rotate">
+            <h2>Community Activities</h2>
+            <div class="events-container">
+                <div class="events-list-panel">
+                    <button class="event-arrow event-arrow-up" id="event-arrow-up" aria-label="Previous event">↑</button>
+                    <div class="events-list-wrapper" id="events-list-wrapper">
+                        <ul class="events-list" id="events-list">
+                            <!-- Events will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    <button class="event-arrow event-arrow-down" id="event-arrow-down" aria-label="Next event">↓</button>
                 </div>
-                <div class="content">
-                    <h2>Community Activities</h2>
-                    <p>TBD - This section will feature upcoming community events, journal clubs, guest speakers, and workshops.</p>
+                <div class="event-details-panel" id="event-details-panel">
+                    <div class="event-details-content">
+                        <h3 class="event-details-title" id="event-details-title">Select an event to view details</h3>
+                        <p class="event-details-date" id="event-details-date"></p>
+                        <div class="event-details-description" id="event-details-description"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -193,9 +299,9 @@
             </div>
         </section>
     </main>
-
+    
     <footer>
-        <p>© 2025 NeuroNur | Built with 💚 by volunteers worldwide</p>
+        <p>© 2025 NeuroNur</p>
         <a href="https://www.linkedin.com/company/neuronur-research-initiative/posts/?feedView=all" target="_blank" rel="noopener" class="linkedin-link" aria-label="NeuroNur on LinkedIn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" style="vertical-align: middle; margin-right: 6px;">
               <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/>
