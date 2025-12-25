@@ -204,21 +204,52 @@ function updateNavigation() {
 
 // Toggle dropdown menu
 document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('dropdown-toggle')) {
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-        dropdownMenu.classList.toggle('show');
-    } else {
-        // Close dropdown when clicking elsewhere
-        const dropdownMenu = document.querySelector('.dropdown-menu');
+    const dropdownToggle = e.target.closest('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    
+    if (dropdownToggle) {
+        e.preventDefault();
+        e.stopPropagation();
         if (dropdownMenu) {
-            dropdownMenu.classList.remove('show');
+            dropdownMenu.classList.toggle('show');
         }
+        return;
+    }
+    
+    // Handle expanding/collapsing subsection dropdowns on mobile
+    if (window.innerWidth <= 840) {
+        const navMainLink = e.target.closest('.nav-main-link');
+        if (navMainLink) {
+            const navItemWithDropdown = navMainLink.closest('.nav-item-with-dropdown');
+            if (navItemWithDropdown) {
+                const isInDropdownMenu = navItemWithDropdown.closest('.dropdown-menu');
+                if (isInDropdownMenu) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navItemWithDropdown.classList.toggle('expanded');
+                    return;
+                }
+            }
+        }
+    }
+    
+    // Close dropdown when clicking elsewhere (but not on links inside dropdown)
+    const clickedInDropdown = e.target.closest('.dropdown-menu');
+    const clickedOnToggle = e.target.closest('.dropdown-toggle');
+    
+    if (!clickedInDropdown && !clickedOnToggle && dropdownMenu) {
+        dropdownMenu.classList.remove('show');
     }
 });
 
 // Smooth scrolling with navbar offset
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        // Don't prevent if this was already handled by dropdown expansion
+        if (e.defaultPrevented) {
+            return;
+        }
+        
         e.preventDefault();
         const href = this.getAttribute('href');
         const target = document.querySelector(href);
@@ -259,13 +290,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth'
             });
             
-            // Then scroll horizontally to the specific subsection (desktop only)
-            if (window.innerWidth > 900) {
-                setTimeout(() => {
-                    const targetSubsectionId = href.substring(1); // Remove the #
-                    scrollSubsectionHorizontally(targetSubsectionId);
-                }, 300); // Wait for vertical scroll to start
-            }
+            // Then scroll to the specific subsection (handles both desktop and mobile)
+            setTimeout(() => {
+                const targetSubsectionId = href.substring(1); // Remove the #
+                scrollSubsectionHorizontally(targetSubsectionId);
+            }, 300); // Wait for vertical scroll to start
         } else {
             // For regular sections, scroll normally
             const targetPosition = target.offsetTop - navbarHeight - 20;

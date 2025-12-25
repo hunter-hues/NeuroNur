@@ -1705,7 +1705,7 @@ footer {
     display: flex;
     gap: 10px;
     flex-wrap: nowrap;
-    overflow: hidden;
+    overflow: visible;
     max-width: 100%;
     width: 100%;
     justify-content: flex-end;
@@ -1732,6 +1732,97 @@ footer {
 @media (min-width: 701px) {
     .nav-dropdown {
         display: none;
+    }
+}
+
+/* Navbar dropdown for subsections - BASE STYLES */
+.nav-item-with-dropdown {
+    position: relative;
+}
+
+/* .nav-main-link inherits styles from .nav-items a */
+
+.nav-subsection-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--content-background);
+    border: 2px solid var(--borders-highlights);
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1001;
+    margin-top: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nav-item-with-dropdown:hover .nav-subsection-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.nav-subsection-dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--main-text);
+    text-decoration: none;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-subsection-dropdown a:last-child {
+    border-bottom: none;
+}
+
+.nav-subsection-dropdown a:hover {
+    background-color: var(--call-to-action-buttons);
+    color: var(--content-background);
+}
+
+/* Desktop: Adjust dropdown for vertical navbar - show below within sidebar */
+@media (min-width: 701px) {
+    .nav-item-with-dropdown {
+        width: 100%;
+    }
+    
+    .nav-subsection-dropdown {
+        position: static;
+        left: auto;
+        top: auto;
+        width: 100%;
+        min-width: 100%;
+        margin: 0;
+        transform: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .nav-item-with-dropdown:hover .nav-subsection-dropdown {
+        max-height: 500px;
+        opacity: 1;
+    }
+    
+    .nav-subsection-dropdown a {
+        padding: 10px 15px 10px 30px;
+        text-align: left;
+        font-size: 0.9rem;
+        background-color: rgba(0, 0, 0, 0.15);
+        border-left: 3px solid var(--links-accents);
     }
 }
 
@@ -2543,5 +2634,113 @@ html {
     .learn-more-btn {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* Mobile: Override for small screens and dropdown menu */
+@media (max-width: 700px) {
+    /* When NOT in dropdown menu, keep hover behavior */
+    .nav-item-with-dropdown {
+        position: relative;
+    }
+    
+    .nav-subsection-dropdown {
+        left: 0;
+        top: 100%;
+        min-width: 160px;
+        margin-top: 0;
+        margin-left: 0;
+    }
+    
+    .nav-subsection-dropdown a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+}
+
+/* Dropdown menu specific styles (when items are inside .dropdown-menu) */
+@media (max-width: 840px) {
+    /* When inside dropdown menu, make it full width and click-based */
+    .dropdown-menu .nav-item-with-dropdown {
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* Style the main link in dropdown menu */
+    .dropdown-menu .nav-main-link {
+        display: block;
+        padding: 10px 15px;
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid var(--borders-highlights);
+        cursor: pointer;
+        position: relative;
+    }
+    
+    .dropdown-menu .nav-main-link:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .dropdown-menu .nav-subsection-dropdown {
+        position: static;
+        display: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0;
+        margin: 0;
+        padding: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
+        pointer-events: auto;
+    }
+    
+    /* Disable hover behavior UNLESS expanded */
+    .dropdown-menu .nav-item-with-dropdown:not(.expanded):hover .nav-subsection-dropdown {
+        display: none !important;
+    }
+    
+    /* When expanded, always show regardless of hover */
+    .dropdown-menu .nav-item-with-dropdown.expanded .nav-subsection-dropdown {
+        display: block !important;
+    }
+    
+    .dropdown-menu .nav-subsection-dropdown a {
+        display: block;
+        padding: 12px 15px 12px 35px;
+        font-size: 0.9rem;
+        white-space: normal;
+        color: #ffffff;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: background-color 0.2s;
+    }
+    
+    .dropdown-menu .nav-subsection-dropdown a:last-child {
+        border-bottom: none;
+    }
+    
+    .dropdown-menu .nav-subsection-dropdown a:hover {
+        background-color: var(--call-to-action-buttons);
+        color: var(--content-background);
+    }
+    
+    /* Add indicator arrow to main link when in dropdown */
+    .dropdown-menu .nav-main-link::after {
+        content: ' ▶';
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+        display: inline-block;
+        margin-left: 8px;
+    }
+    
+    .dropdown-menu .nav-item-with-dropdown.expanded .nav-main-link::after {
+        transform: rotate(90deg);
     }
 }
