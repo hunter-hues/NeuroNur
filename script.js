@@ -40,11 +40,43 @@ const communityEvents = [
 const teamMembers = [
     {
         id: 'team-1',
-        name: 'John Doe',
-        role: 'Team Member',
-        bio: 'Placeholder team member information.',
-        image: './images/NNlogo.jpg' // Placeholder - replace with actual images
-    }
+        name: 'Hajar Almutairi',
+        role: 'Founder and Director',
+        bio: [
+            'Hajar Almutairi is the Founder and Director of NeuroNur, a graduate student, and a neuroscientist-in-training whose work sits at the intersection of neuroscience, data science, and engineering. She holds a BSc in Neuroscience with additional training in data analytics and machine learning, and she plans to continue this path toward a PhD in neuroscience. Her research interests include neurodegenerative disorders, biofluid and neural biomarkers, brain imaging, cognitive testing, and predictive-processing frameworks that explore how the brain anticipates and interprets the world.',
+            'Hajar founded NeuroNur to help build the kind of research culture she believes in: open, collaborative, and genuinely inclusive. She is particularly passionate about creating spaces where researchers, trainees, and students from diverse backgrounds can co-design studies, share methods, and contribute meaningfully to neuroscience. Through NeuroNur, she aims to lower barriers to participation, encourage transparent and rigorous science, and empower emerging researchers to take an active role in shaping the future of the field. On a personal note, Hajar loves to read and to explore new coffee shops.'
+        ],
+        image: './teamImages/Tezza-4157.jpeg'
+    },
+    {
+        id: 'team-2',
+        name: 'Dhanya Vettiatil',
+        role: 'Scientific Writer',
+        bio: [
+            'Dhanya Vettiatil is a neuroscientist and stem cell biologist whose work focuses on how DNA damage, mitochondrial function, and immune pathways shape brain development and neurodevelopmental disorders. She earned her PhD in Biochemistry and was awarded a competitive three-year Women Scientist Grant from the Department of Science and Technology (India), supporting her independent research early in her career. Dhanya is currently a postdoctoral researcher at the Albert Einstein College of Medicine, New York, where she studies autism, Pediatric Acute Neuropsychiatric Syndrome (PANS), fetal brain development and neural tissue engineering using stem cell models and multi-omics approaches. She also teaches undergraduate genetics and microbiology and mentors students through the New York Academy of Sciences.',
+            'I chose to join this neuroscience community because I deeply believe that science grows stronger when we learn, question, and build together. This initiative means a lot to me because it creates a platform where voices at different career stages can come together, exchange ideas, and inspire each other. As the main scientific writer, I’m excited to help translate complex research into accessible, engaging content that helps people to appreciate the beauty of brain science.',
+            'On a personal note, I’m passionate about mentoring young scientists, especially women and first-generation students, and helping them navigate their path with confidence. A fun fact about me: I unwind through Indian classical dance and by exploring new places, both of which recharge my creativity and curiosity.'
+        ],
+        image: './teamImages/DhanyaVettiatil.jpg'
+    },
+    {
+        id: 'team-3',
+        name: 'Hunter Hughes',
+        role: 'Web Developer',
+        bio: [
+            'Hunter Hughes is a full-stack engineer with experience building practical, backend-focused tools and web applications. He is gaining experience, contributing, and creating projects involving API integrations, data-driven features, and straightforward, maintainable system design. Hunter joined NeuroNur to support the team’s goal of creating clear, accessible online resources and to apply his technical skills toward an initiative centered on helping others, while gaining experience after graduating from CSUF.'
+        ],
+        image: './teamImages/hunter.png'
+    },
+    {
+        id: 'team-1',
+        name: 'Sandra Oluoch',
+        role: 'Founding Scientific Engineer',
+        bio: [
+            'Sandra is the Founding Scientific Engineer at the NeuroNur Initiative. With a background in machine learning, computer vision, and cell biology, she is currently working on a computational flagship project for the Initiative where she is exploring how different deep learning models perform at instance segmentation of neural cells. She has worked at research institutes in the Seattle area such as the Allen Institute and Institute for Systems Biology. Sandra is passionate about racial and cultural diversity and inclusivity in the research space and believes that the best research is done with people from different backgrounds. Outside of work, Sandra loves the outdoors and can often be found high up in the mountains or deep under the sea.',
+        ],
+        image: './teamImages/IMG_2799.jpeg'
+    },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -478,6 +510,45 @@ function closeProjectModal() {
     
     // Restore body scroll
     document.body.style.overflow = 'auto';
+}
+
+// Open team member bio modal
+function openBioModal(memberId) {
+    const modal = document.getElementById('bioModal');
+    const modalContent = document.getElementById('bioModalContent');
+    
+    // Find team member
+    const member = teamMembers.find(m => m.id === memberId);
+    
+    if (member) {
+        // Build bio HTML
+        const bioArray = Array.isArray(member.bio) ? member.bio : [member.bio];
+        const bioHTML = bioArray.map(paragraph => `<p>${paragraph}</p>`).join('');
+        
+        modalContent.innerHTML = `
+            <div class="bio-modal-header">
+                <img src="${member.image}" alt="${member.name}" class="bio-modal-image">
+                <div class="bio-modal-title">
+                    <h2>${member.name}</h2>
+                    <p class="bio-modal-role">${member.role}</p>
+                </div>
+            </div>
+            <div class="bio-modal-body">
+                ${bioHTML}
+            </div>
+        `;
+        
+        // Show modal
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Close bio modal
+function closeBioModal() {
+    const modal = document.getElementById('bioModal');
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
 }
 
 // Event listeners for Learn More buttons
@@ -1308,7 +1379,15 @@ function initTeamCarousel() {
         card.dataset.index = index;
         
         if (isActive) {
-            // Active card: image on left, name and bio on right
+            // Get bio preview (first paragraph, truncated)
+            const bioPreview = Array.isArray(member.bio) 
+                ? member.bio[0] 
+                : member.bio;
+            const truncatedBio = bioPreview.length > 150 
+                ? bioPreview.substring(0, 150) + '...' 
+                : bioPreview;
+            
+            // Active card: image on left, name and bio preview on right
             card.innerHTML = `
                 <div class="team-member-image active-image">
                     <img src="${member.image}" alt="${member.name}">
@@ -1316,7 +1395,8 @@ function initTeamCarousel() {
                 <div class="team-member-info">
                     <h3 class="team-member-name">${member.name}</h3>
                     <p class="team-member-role">${member.role}</p>
-                    <p class="team-member-bio">${member.bio}</p>
+                    <p class="team-member-bio-preview">${truncatedBio}</p>
+                    <button class="read-bio-btn" data-member-id="${member.id}">Read Full Bio</button>
                 </div>
             `;
         } else {
@@ -1349,7 +1429,7 @@ function initTeamCarousel() {
             const cards = [];
             
             for (let i = -3; i <= 3; i++) {
-                let index = (currentIndex + i + total) % total;
+                let index = ((currentIndex + i) % total + total) % total;
                 const isActive = i === 0;
                 cards.push(createTeamCard(teamMembers[index], index, isActive));
             }
@@ -1394,6 +1474,17 @@ function initTeamCarousel() {
         }
         
         renderCarousel();
+        attachBioButtonListeners();
+    }
+    
+    // Add event listener for "Read Bio" buttons
+    function attachBioButtonListeners() {
+        document.querySelectorAll('.read-bio-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const memberId = this.getAttribute('data-member-id');
+                openBioModal(memberId);
+            });
+        });
     }
     
     // Event listeners
@@ -1406,9 +1497,11 @@ function initTeamCarousel() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
             renderCarousel();
+            attachBioButtonListeners();
         }, 250);
     });
     
     // Initialize
     renderCarousel();
+    attachBioButtonListeners();
 }

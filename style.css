@@ -549,10 +549,11 @@ main {
         width: 500px;
         max-width: 500px;
         min-width: 500px;
+        max-height: 350px;
         display: flex;
-        gap: 30px;
+        gap: 25px;
         align-items: flex-start;
-        padding: 30px;
+        padding: 25px;
         background-color: var(--content-background);
         border-radius: 12px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -575,8 +576,8 @@ main {
     }
     
     .team-member-image.active-image {
-        width: 200px;
-        height: 200px;
+        width: 160px;
+        height: 160px;
         flex-shrink: 0;
     }
     
@@ -602,6 +603,15 @@ main {
     
     .team-member-info {
         flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+    
+    .team-member-bio-preview {
+        flex: 0 1 auto;
+        margin-bottom: 10px;
+        line-height: 1.5;
     }
     
     .team-member-name {
@@ -2592,6 +2602,74 @@ html {
     line-height: 1.6;
 }
 
+/* Read Bio Button */
+.read-bio-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--call-to-action-buttons);  /* Change this */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.read-bio-btn:hover {
+    background: var(--links-accents);  /* Change this */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(83, 150, 121, 0.3);
+}
+
+/* Bio Modal Specific Styles */
+.bio-modal-container {
+    max-width: 700px;
+}
+
+.bio-modal-header {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.bio-modal-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.bio-modal-title h2 {
+    margin: 0 0 8px 0;
+    color: var(--main-text-color);
+    font-size: 1.8rem;
+}
+
+.bio-modal-role {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.bio-modal-body p {
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: var(--main-text-color);
+    font-size: 1rem;
+}
+
+.bio-modal-body p:last-child {
+    margin-bottom: 0;
+}
+
 /* Responsive adjustments for modal image carousel */
 @media (max-width: 600px) {
     .image-carousel-tabs {
@@ -2604,6 +2682,25 @@ html {
     
     .image-carousel-panel img {
         max-height: 400px;
+    }
+    
+    /* Bio Modal Mobile Adjustments */
+    .bio-modal-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .bio-modal-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bio-modal-title h2 {
+        font-size: 1.5rem;
+    }
+    
+    .bio-modal-role {
+        font-size: 1rem;
     }
 }
 
