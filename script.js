@@ -69,7 +69,7 @@ const teamMembers = [
         image: './teamImages/hunter.png'
     },
     {
-        id: 'team-1',
+        id: 'team-4',
         name: 'Sandra Oluoch',
         role: 'Founding Scientific Engineer',
         bio: [
