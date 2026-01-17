@@ -50,6 +50,15 @@ const teamMembers = [
     },
     {
         id: 'team-2',
+        name: 'Sandra Oluoch',
+        role: 'Founding Scientific Engineer',
+        bio: [
+            'Sandra is the Founding Scientific Engineer at the NeuroNur Initiative. With a background in machine learning, computer vision, and cell biology, she is currently working on a computational flagship project for the Initiative where she is exploring how different deep learning models perform at instance segmentation of neural cells. She has worked at research institutes in the Seattle area such as the Allen Institute and Institute for Systems Biology. Sandra is passionate about racial and cultural diversity and inclusivity in the research space and believes that the best research is done with people from different backgrounds. Outside of work, Sandra loves the outdoors and can often be found high up in the mountains or deep under the sea.',
+        ],
+        image: './teamImages/IMG_2799.jpeg'
+    },
+    {
+        id: 'team-3',
         name: 'Dhanya Vettiatil',
         role: 'Scientific Writer',
         bio: [
@@ -60,22 +69,13 @@ const teamMembers = [
         image: './teamImages/DhanyaVettiatil.jpg'
     },
     {
-        id: 'team-3',
+        id: 'team-4',
         name: 'Hunter Hughes',
         role: 'Web Developer',
         bio: [
             'Hunter Hughes is a full-stack engineer with experience building practical, backend-focused tools and web applications. He is gaining experience, contributing, and creating projects involving API integrations, data-driven features, and straightforward, maintainable system design. Hunter joined NeuroNur to support the team’s goal of creating clear, accessible online resources and to apply his technical skills toward an initiative centered on helping others, while gaining experience after graduating from CSUF.'
         ],
         image: './teamImages/hunter.png'
-    },
-    {
-        id: 'team-4',
-        name: 'Sandra Oluoch',
-        role: 'Founding Scientific Engineer',
-        bio: [
-            'Sandra is the Founding Scientific Engineer at the NeuroNur Initiative. With a background in machine learning, computer vision, and cell biology, she is currently working on a computational flagship project for the Initiative where she is exploring how different deep learning models perform at instance segmentation of neural cells. She has worked at research institutes in the Seattle area such as the Allen Institute and Institute for Systems Biology. Sandra is passionate about racial and cultural diversity and inclusivity in the research space and believes that the best research is done with people from different backgrounds. Outside of work, Sandra loves the outdoors and can often be found high up in the mountains or deep under the sea.',
-        ],
-        image: './teamImages/IMG_2799.jpeg'
     },
 ];
 
@@ -426,11 +426,74 @@ const projectData = {
             }
         ],
         content: `
-            <h2>🔬 Instance Segmentation for Neurological Disease Research</h2>
+            <h2>🔬Instance Segmentation for Neurological Disease Research</h2>
             
             <p>Neurological diseases such as Alzheimer's and Lewy Body Dementia are still poorly understood on a cellular level. Instance segmentation is a powerful tool in object detection and tracking of individual cells. Light microscopy is a non-invasive and easy way to study cells and instance segmentation is an effective way to collect quantifiable information that can help with disease detection and treatment. Over the years, there have been different kinds of deep learning models created to improve the quality of these segmentations, but each have their advantages and disadvantages.</p>
             
             <p>The goal is to explore and compare how well different models train on brightfield images of neurons, astrocytes and the neuroblastoma cell line, SH-SY5Y. Three different deep learning neural networks will be used and the accuracy of the resulting predictions will be compared using the Dice Score, Average Precision and Recall. The data used for training is the Satorius Dataset and contains 484 images. The ground truth labels are run-length encoding (RLE) annotations. Models of interest: Mask R-CNN, U-Net CNN and Mask2Transformer.</p>
+        `
+    },
+    'project-2': {
+        title: 'Neural Mechanisms of Predictive Processing',
+        images: [
+            {
+                path: './projectImages/NeuralMechanisms.png',
+                label: 'Figure 10',
+                description: 'Figure 10: Stimulus design. Our experimental design includes four different session contexts (standard mismatch, sensorimotor mismatch, sequence mismatch, and temporal mismatch) with five types of oddballs: drifting grating halt, two alternative drifting orientations, an omission, and temporal jittered oddballs.'
+            }
+        ],
+        content: `
+            <h2>🔬Neural Mechanisms of Predictive Processing</h2>
+            
+            <h3>Rationale</h3>
+            <p>Predictive processing is a core framework for understanding perception and learning. The brain continuously forms expectations about incoming sensory input and updates internal models when reality deviates from those expectations. However, mismatch is not a single phenomenon. Violations can occur in what happens (content), when it happens (timing), how it unfolds (sequence), or whether it matches our actions (sensorimotor). This project addresses a central gap in the field. Are mismatch responses driven by one common neural computation, or by multiple specialized mechanisms?<p>
+            <h3>Main research questions</h3>
+            <ul>
+                <li>Do different mismatch stimulus types recruit shared neural mechanisms, or distinct context-specific circuits?</li>
+                <li>How do excitatory and inhibitory neurons differentially contribute to prediction error signals across mismatch contexts?</li>
+                <li>Which computational primitives are most central to predictive processing, including stimulus adaptation, dendritic computation, excitation and inhibition balance, and hierarchical processing?</li>
+                <li>How do prediction error mechanisms compare across species, and which signatures are conserved versus divergent?</li>
+            </ul>
+            <h3>Experimental approaches</h3> 
+            <p>The project uses multiple session contexts to evoke different forms of mismatch and prediction error, allowing comparisons across paradigms:</p>
+            <ul>
+                <li>Standard mismatch: unexpected changes in a sensory stream relative to a learned or repeated pattern</li>
+                <li>Sensorimotor mismatch: violations between expected sensory consequences of an action and actual sensory input</li>
+                <li>Sequence mismatch: violations of an expected order of stimuli within a learned sequence</li>
+                <li>Temporal mismatch: violations in expected timing, including omissions or temporal jitter events</li>
+            </ul>
+            <h3> Reference:</h3>
+            <a target="_blank" href='https://arxiv.org/abs/2504.09614'>Neural mechanisms of predictive processing: a collaborative community experiment through the OpenScope program</a>
+        `
+    },
+    'project-3': {
+        title: '🔬Biofluid Biomarkers for Neurodegeneration',
+        images: [
+            {
+                path: './projectImages/Biomarkers.jpg',
+                label: 'Example Figure',
+                description: 'Summary of Alzheimer’s disease (AD) related biomarkers across three biofluids: saliva (blue), blood (orange), and cerebrospinal fluid (CSF) (green). Arrows indicate the direction of change for each biomarker in AD (up = increased, down = decreased), highlighting how the disease affects multiple biological pathways across different fluids. Created in BioRender. Abiad, E. (2024) <a href=\'https://BioRender.com/z08y571\' target=\'_blank\'>https://BioRender.com/z08y571</a> '
+            }
+        ],
+        content: `
+            <h2>🔬Biofluid Biomarkers for Neurodegeneration</h2>
+            
+            <h3>Scientific Rationale</h3>
+            <p>
+                Neurodegenerative disorders often begin long before clear clinical symptoms appear. During this early window, underlying biological changes may already be measurable. Biofluid biomarkers offer a practical way to capture these changes using accessible samples, providing a more objective view of disease biology and progression.
+
+                These biomarkers can reflect key processes such as neurodegeneration, neuroinflammation, synaptic dysfunction, protein aggregation, and vascular or metabolic changes. However, findings can vary across studies due to differences in cohorts, disease stage, assay platforms, and sample handling. A rigorous synthesis of the literature helps clarify:
+
+                <ul>
+                    <li>Which biomarkers show the most consistent associations with disease</li>
+
+                    <li>Which biofluids and assays are most feasible and scalable for real-world use</li>
+
+                    <li>Where evidence remains limited or conflicting, including gaps driven by small samples or methodological variation</li>
+                </ul>
+
+                By organizing the biomarker landscape across fluids and biological pathways, we aim to improve interpretability and help guide future research priorities and clinical applications.
+            </p>
         `
     }
 };
@@ -438,49 +501,44 @@ const projectData = {
 function openProjectModal(projectId) {
     const modal = document.getElementById('projectModal');
     const modalContent = document.getElementById('modalContent');
-    
-    // Get project data
     const project = projectData[projectId];
     
-    if (project) {
-        // Build image carousel HTML if images exist
-        let imageCarouselHTML = '';
-        if (project.images && project.images.length > 0) {
-            imageCarouselHTML = `
-                <div class="modal-image-carousel">
-                    <h3>Mask R-CNN Results</h3>
-                    <p class="image-carousel-intro">Results from running the Mask R-CNN model. For each image: raw image (left), ground truth (center), Mask R-CNN prediction (right).</p>
-                    <div class="image-carousel-tabs">
-                        ${project.images.map((img, index) => 
-                            `<button class="image-tab-button ${index === 0 ? 'active' : ''}" data-image-index="${index}">${img.label}</button>`
-                        ).join('')}
-                    </div>
-                    <div class="image-carousel-content">
-                        ${project.images.map((img, index) => 
-                            `<div class="image-carousel-panel ${index === 0 ? 'active' : ''}" data-image-index="${index}">
-                                <img src="${img.path}" alt="${img.label}">
-                                <p class="image-description">${img.description}</p>
-                            </div>`
-                        ).join('')}
-                    </div>
+    if (!project) return;
+    
+    // Build image carousel HTML if images exist
+    let imageCarouselHTML = '';
+    if (project.images && project.images.length > 0) {
+        imageCarouselHTML = `
+            <div class="modal-image-carousel">
+                <h3>Project Images</h3>
+                <div class="image-carousel-tabs">
+                    ${project.images.map((img, index) => 
+                        `<button class="image-tab-button ${index === 0 ? 'active' : ''}" data-image-index="${index}">${img.label}</button>`
+                    ).join('')}
                 </div>
-            `;
-        }
-        
-        // Insert project content with image carousel
-        modalContent.innerHTML = project.content + imageCarouselHTML;
-        
-        // Set up image carousel event listeners
-        if (project.images && project.images.length > 0) {
-            setupImageCarousel();
-        }
-        
-        // Show modal
-        modal.classList.add('show');
-        
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
+                <div class="image-carousel-content">
+                    ${project.images.map((img, index) => 
+                        `<div class="image-carousel-panel ${index === 0 ? 'active' : ''}" data-image-index="${index}">
+                            <img src="${img.path}" alt="${img.label}">
+                            <p class="image-description">${img.description}</p>
+                        </div>`
+                    ).join('')}
+                </div>
+            </div>
+        `;
     }
+    
+    // Insert project content with image carousel FIRST
+    modalContent.innerHTML = project.content + imageCarouselHTML;
+    
+    // THEN set up event listeners (now that buttons exist in DOM)
+    if (project.images && project.images.length > 0) {
+        setupImageCarousel();
+    }
+    
+    // Show modal and prevent body scroll
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
 }
 
 function setupImageCarousel() {
