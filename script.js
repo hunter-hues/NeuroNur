@@ -1,30 +1,7 @@
-emailjs.init('Q4xjtELSUhXxf30kr');
-
-// Subsection carousel data - maps section IDs to their subsections
-const subsectionData = {
-    'about': {
-        name: 'About',
-        subsections: [
-            { id: 'about-1', name: 'Who We Are' },
-            { id: 'about-2', name: 'Why NeuroNur' },
-            { id: 'about-3', name: 'Our Values' }
-        ]
-    },
-    'work': {
-        name: 'Our Work',
-        subsections: [
-            { id: 'work-1', name: 'What We Do' },
-            { id: 'work-2', name: 'Our Projects' }
-        ]
-    },
-    'involved': {
-        name: 'Get Involved',
-        subsections: [
-            { id: 'involved-1', name: 'Get Involved' },
-            { id: 'involved-2', name: 'Our Team' }
-        ]
-    }
-};
+// Initialize EmailJS if available
+if (typeof emailjs !== 'undefined') {
+    emailjs.init('Q4xjtELSUhXxf30kr');
+}
 
 // Community Events Data
 const communityEvents = [
@@ -85,19 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
     handleScrollFade();
     initCommunityEvents();
     initTeamCarousel();
-    // Immediately make subsections visible if their container is in view (for desktop)
-    if (window.innerWidth > 900) {
-        const containers = document.querySelectorAll('.subsection-container');
-        containers.forEach(container => {
-            const rect = container.getBoundingClientRect();
-            if (rect.top < window.innerHeight && rect.bottom > 0) {
-                const subsections = container.querySelectorAll('.subsection');
-                subsections.forEach(sub => sub.classList.add('visible'));
-            }
-        });
-    }
-    handleMobileAboutImages();
-    initSubsectionCarousel();
 });
 
 window.addEventListener('scroll', function() {
@@ -109,13 +73,14 @@ window.addEventListener('scroll', function() {
     handleScrollFade(); 
 });
 
-const tabButtons = document.querySelectorAll('.tab-button');
-console.log('Found tab buttons: ', tabButtons);
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    console.log('Found tab buttons: ', tabButtons);
 
-tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        this.classList.add('active');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
 
         const allTabs = document.querySelectorAll('.tab-panel');
 
@@ -143,24 +108,27 @@ tabButtons.forEach(button => {
             setTimeout(updateTabContentHeight, 20);
         }
     });
-});
+    });
 
-const allTabs = document.querySelectorAll('.tab-panel');
-allTabs.forEach((tab, index) => {
-    if (index === 0) {
-        tab.classList.add('active');
-    } else {
-        tab.classList.remove('active');
+    const allTabs = document.querySelectorAll('.tab-panel');
+    allTabs.forEach((tab, index) => {
+        if (index === 0) {
+            tab.classList.add('active');
+        } else {
+            tab.classList.remove('active');
+        }
+    });
+
+    if (tabButtons.length > 0) {
+        tabButtons[0].classList.add('active');
+    }
+
+    const firstActivePanel = document.querySelector('.tab-panel.active');
+    if (firstActivePanel) {
+        const tabContent = document.querySelector('.tab-content');
+        tabContent.style.height = firstActivePanel.offsetHeight + 'px';
     }
 });
-
-tabButtons[0].classList.add('active');
-
-const firstActivePanel = document.querySelector('.tab-panel.active');
-if (firstActivePanel) {
-    const tabContent = document.querySelector('.tab-content');
-    tabContent.style.height = firstActivePanel.offsetHeight + 'px';
-}
 
 function updateTabContentHeight() {
     const activePanel = document.querySelector('.tab-panel.active');
@@ -177,31 +145,32 @@ window.addEventListener('resize', function() {
         updateTabContentHeight();
     }, 250);
     updateNavigation();
-    handleMobileAboutImages();
 });
 
 let form = document.querySelector('form');
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    let name = form.elements.name.value;
-    let email = form.elements.email.value;
-    let message = form.elements.message.value;
+if (form) {
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        let name = form.elements.name.value;
+        let email = form.elements.email.value;
+        let message = form.elements.message.value;
 
-    emailjs.send('service_y40kc5p', 'template_1j8f96j', {
-        name: name,
-        email: email, 
-        message: message
-    })
-    .then(function(response) {
-        document.getElementById('success-message').style.display = 'block';
-        document.getElementById('error-message').style.display = 'none';
-        form.reset();
-    })
-    .catch(function(error) {
-        document.getElementById('error-message').style.display = 'block';
-        document.getElementById('success-message').style.display = 'none';
+        emailjs.send('service_y40kc5p', 'template_1j8f96j', {
+            name: name,
+            email: email, 
+            message: message
+        })
+        .then(function(response) {
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+            form.reset();
+        })
+        .catch(function(error) {
+            document.getElementById('error-message').style.display = 'block';
+            document.getElementById('success-message').style.display = 'none';
+        });
     });
-});
+}
 
 // Add responsive navigation functionality
 function updateNavigation() {
@@ -274,61 +243,17 @@ document.addEventListener('click', function(e) {
     }
 });
 
-// Smooth scrolling with navbar offset
+// Smooth scrolling for same-page anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        // Don't prevent if this was already handled by dropdown expansion
-        if (e.defaultPrevented) {
-            return;
-        }
+        if (e.defaultPrevented) return;
         
         e.preventDefault();
         const href = this.getAttribute('href');
         const target = document.querySelector(href);
         
-        if (!target) return;
-        
-        const navbarHeight = 100;
-        
-        // Check if target is a subsection-container itself
-        if (target.classList.contains('subsection-container')) {
-            // Scroll to the container
-            const containerPosition = target.offsetTop - navbarHeight - 20;
-            window.scrollTo({
-                top: containerPosition,
-                behavior: 'smooth'
-            });
-            
-            // Then scroll to the first subsection (desktop only)
-            if (window.innerWidth > 900) {
-                const sectionGroup = target.getAttribute('data-section');
-                if (sectionGroup && subsectionData[sectionGroup] && subsectionData[sectionGroup].subsections.length > 0) {
-                    setTimeout(() => {
-                        const firstSubsectionId = subsectionData[sectionGroup].subsections[0].id;
-                        scrollSubsectionHorizontally(firstSubsectionId);
-                    }, 300);
-                }
-            }
-        }
-        // Check if target is a subsection (inside a subsection-container)
-        else if (target.classList.contains('subsection') || target.closest('.subsection-container')) {
-            const subsectionContainer = target.closest('.subsection-container') || target;
-            
-            // For subsections, scroll to the container first
-            const containerPosition = subsectionContainer.offsetTop - navbarHeight - 20;
-            
-            window.scrollTo({
-                top: containerPosition,
-                behavior: 'smooth'
-            });
-            
-            // Then scroll to the specific subsection (handles both desktop and mobile)
-            setTimeout(() => {
-                const targetSubsectionId = href.substring(1); // Remove the #
-                scrollSubsectionHorizontally(targetSubsectionId);
-            }, 300); // Wait for vertical scroll to start
-        } else {
-            // For regular sections, scroll normally
+        if (target) {
+            const navbarHeight = 100;
             const targetPosition = target.offsetTop - navbarHeight - 20;
             
             window.scrollTo({
@@ -339,67 +264,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Helper function to scroll subsection horizontally (used by navbar links)
-function scrollSubsectionHorizontally(targetSubsectionId) {
-    if (window.innerWidth <= 900) {
-        // Mobile: use normal scrollIntoView
-        const targetElement = document.getElementById(targetSubsectionId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        return;
-    }
-    
-    // Desktop: scroll the wrapper horizontally
-    const targetElement = document.getElementById(targetSubsectionId);
-    if (!targetElement) return;
-    
-    const wrapper = targetElement.closest('.subsection-wrapper');
-    if (!wrapper) return;
-    
-    // Calculate scroll position (each subsection is 100vw wide)
-    const sectionGroup = targetElement.getAttribute('data-section');
-    if (!sectionGroup || !subsectionData[sectionGroup]) return;
-    
-    const sectionInfo = subsectionData[sectionGroup];
-    const targetIndex = sectionInfo.subsections.findIndex(sub => sub.id === targetSubsectionId);
-    
-    if (targetIndex !== -1) {
-        // Calculate scroll position based on wrapper width (not window width, to account for navbar)
-        const wrapperWidth = wrapper.offsetWidth;
-        const scrollPosition = targetIndex * wrapperWidth;
-        wrapper.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
-    }
-}
-
 // Fade in on scroll
 function handleScrollFade() {
     const sections = document.querySelectorAll('.content-section');
     
     sections.forEach(section => {
-        // For subsections in horizontal wrappers, check if their container is in view
-        const container = section.closest('.subsection-container');
-        if (container && window.innerWidth > 900) {
-            const containerRect = container.getBoundingClientRect();
-            // If container is in viewport, make all subsections visible
-            if (containerRect.top < window.innerHeight && containerRect.bottom > 0) {
-                section.classList.add('visible');
-            } else {
-                section.classList.remove('visible');
-            }
+        // Regular sections - use normal scroll detection
+        const sectionTop = section.getBoundingClientRect().top;
+        const sectionVisible = 150; // Trigger when 150px from top
+        
+        if (sectionTop < window.innerHeight - sectionVisible) {
+            section.classList.add('visible');
         } else {
-            // Regular sections - use normal scroll detection
-            const sectionTop = section.getBoundingClientRect().top;
-            const sectionVisible = 150; // Trigger when 150px from top
-            
-            if (sectionTop < window.innerHeight - sectionVisible) {
-                section.classList.add('visible');
-            } else {
-                section.classList.remove('visible');
-            }
+            section.classList.remove('visible');
         }
     });
 }
@@ -641,8 +518,8 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
-// Handle mobile About and Work section images - show only first subsection's image
-function handleMobileAboutImages() {
+// Handle mobile About and Work section images - REMOVED (no longer needed for multi-page structure)
+function handleMobileAboutImages_REMOVED() {
     const aboutSubsections = document.querySelectorAll('.subsection[data-section="about"]');
     const workSubsections = document.querySelectorAll('.subsection[data-section="work"]');
     const allSubsections = [...aboutSubsections, ...workSubsections];
@@ -814,8 +691,8 @@ function handleMobileAboutImages() {
     });
 }
 
-// Subsection Carousel Functionality
-function initSubsectionCarousel() {
+// Subsection Carousel Functionality - REMOVED (no longer needed for multi-page structure)
+function initSubsectionCarousel_REMOVED() {
     const carousel = document.getElementById('subsection-carousel');
     const carouselLeft = document.getElementById('carousel-left');
     const carouselRight = document.getElementById('carousel-right');
@@ -1283,13 +1160,18 @@ function initCommunityEvents() {
     const eventsListWrapper = document.getElementById('events-list-wrapper');
     
     if (!eventsList || !eventDetailsPanel || !arrowUp || !arrowDown || !eventsListWrapper) {
+        console.log('Community events section not found on this page');
         return; // Section not found, exit
     }
+    
+    console.log('Initializing community events...');
+    console.log('Found events:', communityEvents);
     
     let selectedEventId = null;
     
     // Populate events list
     function populateEventsList() {
+        console.log('Populating events list...');
         eventsList.innerHTML = '';
         
         communityEvents.forEach((event, index) => {
@@ -1424,11 +1306,15 @@ function initTeamCarousel() {
     const carouselRight = document.getElementById('team-carousel-right');
     
     if (!carouselTrack || !carouselLeft || !carouselRight) {
+        console.log('Team carousel not found on this page');
         return; // Section not found, exit
     }
     
+    console.log('Initializing team carousel...');
+    console.log('Found team members:', teamMembers);
+    
     let currentIndex = 0;
-    const isMobile = window.innerWidth <= 900;
+    const isMobile = window.innerWidth <= 950;
     
     // Create team member cards
     function createTeamCard(member, index, isActive = false) {
@@ -1471,8 +1357,9 @@ function initTeamCarousel() {
     
     // Render carousel
     function renderCarousel() {
+        console.log('Rendering carousel, currentIndex:', currentIndex);
         carouselTrack.innerHTML = '';
-        const isMobile = window.innerWidth <= 900;
+        const isMobile = window.innerWidth <= 950;
         
         if (isMobile) {
             // Mobile: vertical layout, show one at a time
@@ -1500,7 +1387,7 @@ function initTeamCarousel() {
     
     // Update button states
     function updateCarouselButtons() {
-        const isMobile = window.innerWidth <= 900;
+        const isMobile = window.innerWidth <= 950;
         if (isMobile) {
             // Mobile: enable/disable based on position
             carouselLeft.disabled = currentIndex === 0;
@@ -1514,7 +1401,7 @@ function initTeamCarousel() {
     
     // Navigate carousel
     function navigateCarousel(direction) {
-        const isMobile = window.innerWidth <= 900;
+        const isMobile = window.innerWidth <= 950;
         
         if (isMobile) {
             if (direction === 'left' && currentIndex > 0) {

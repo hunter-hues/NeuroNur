@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroNur Research Initiative</title>
+    <title>Get Involved - NeuroNur Research Initiative</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/NNlogo.png">
 
@@ -44,15 +44,43 @@
         </div>
     </nav>
     <main>
-        <!-- Home Section -->
-        <section id="home" class="content-section">
-            <div class="home-hero-background">
-                <h2 class="home-title">NeuroNur</h2>
-                <p class="mission-statement">NeuroNur is a global, volunteer-based initiative committed to advancing neuroscience research by fostering collaboration, communication, and knowledge-sharing across borders. Our platform empowers scientists, researchers, students, and professionals from all backgrounds to connect, co-design studies, and contribute meaningfully to the field.</p>
-            </div>
-            <div class="hero-cta">
-                <a href="involved.html" class="cta-button">Join Us</a>
-                <a href="work.html" class="cta-button secondary">Projects</a>
+        <!-- Get Involved Section -->
+        <section id="involved-1" class="content-section">
+            <img src="./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/Brains work via their genes just as much as their neurons.jpeg" alt="Get involved header" class="section-hero">
+            <h2>Get Involved</h2>
+            <p>Whether you're a researcher, student, clinician, data scientist, or simply passionate about the brain, there's a place for you at NeuroNur.</p>
+            
+            <h3>You Can:</h3>
+            <ul>
+                <li>Volunteer in research or community roles</li>
+                <li>Mentor emerging scientists</li>
+                <li>Collaborate on global research projects</li>
+                <li>Support our mission through funding or partnership</li>
+            </ul>
+            
+            <p>We're building a team of researchers, students, and volunteers! If you're interested in collaborating on neuroscience, data analysis, or outreach, <a href="https://forms.gle/2b6vWDU2vdgSbuGw7" target="_blank" rel="noopener noreferrer">click here to apply</a>.</p>
+        </section>
+
+        <!-- Community Activities Section -->
+        <section id="community" class="content-section">
+            <h2>Community Activities</h2>
+            <div class="events-container">
+                <div class="events-list-panel">
+                    <button class="event-arrow event-arrow-up" id="event-arrow-up" aria-label="Previous event">↑</button>
+                    <div class="events-list-wrapper" id="events-list-wrapper">
+                        <ul class="events-list" id="events-list">
+                            <!-- Events will be populated by JavaScript -->
+                        </ul>
+                    </div>
+                    <button class="event-arrow event-arrow-down" id="event-arrow-down" aria-label="Next event">↓</button>
+                </div>
+                <div class="event-details-panel" id="event-details-panel">
+                    <div class="event-details-content">
+                        <h3 class="event-details-title" id="event-details-title">Select an event to view details</h3>
+                        <p class="event-details-date" id="event-details-date"></p>
+                        <div class="event-details-description" id="event-details-description"></div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

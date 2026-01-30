@@ -1,23 +1,5 @@
-/* 
- * SNAP SCROLLING IMPLEMENTATION:
- * Snap scrolling is implemented for screens above 900px (min-width: 901px).
- * Below 900px (max-width: 900px) remains regular scroll behavior.
- * This ensures mobile/tablet users have normal scrolling while desktop gets the snap experience.
- */
-
 html {
     scroll-behavior: smooth;
-}
-
-/* Desktop: Enable snap scrolling above 900px */
-@media (min-width: 901px) {
-    html {
-        scroll-snap-type: y mandatory;
-    }
-    
-    body {
-        scroll-snap-type: y mandatory;
-    }
 }
 
 /* Fade in animation */
@@ -50,11 +32,12 @@ html {
 }
 
 main {
-    max-width: 90%;
-    margin: 0 auto;
+    margin: 0;
     padding: 10px;
     padding-top: 130px;
+    flex: 1 0 auto;
 }
+
 
 /* Mobile/Tablet: Make main full width for better space usage */
 @media (max-width: 900px) {
@@ -64,14 +47,46 @@ main {
         padding: 0 10px;
         padding-top: 130px;
     }
+    
+    main:has(#home) {
+        padding: 0;
+        padding-top: 0;
+    }
+    
+    #home.content-section {
+        padding: 0;
+        padding-top: 100px;
+        margin: 0;
+        width: 100%;
+        min-height: calc(100vh - 100px);
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .home-hero-background {
+        margin: 0;
+        margin-top: 0;
+        padding: 0;
+        padding-top: 0;
+        width: 100%;
+        flex-shrink: 0;
+    }
+    
+    #home .hero-cta {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
 }
 
 /* Desktop: Adjust main content for left navbar and full viewport sections */
 @media (min-width: 701px) {
     main {
         margin-left: 200px;
+        margin-right: 0;
         padding: 0;
-        max-width: calc(100% - 200px);
+        width: calc(100vw - 200px);
+        max-width: calc(100vw - 200px);
         display: flex;
         flex-direction: column;
     }
@@ -87,9 +102,15 @@ main {
     scroll-margin-top: 120px;
     border-radius: 8px;
     max-width: 70%;
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    transform: translateY(0);
     transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#home.content-section {
+    max-width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 /* Mobile/Tablet: Increase content section width for better space usage */
@@ -101,177 +122,17 @@ main {
     }
 }
 
-/* Desktop: Full viewport height sections */
+/* Desktop: Remove old snap-scroll viewport constraints */
 @media (min-width: 701px) {
     .content-section {
         width: 100%;
-        height: 100vh;
-        max-height: 100vh;
         max-width: 100%;
-        margin: 0;
+        margin: 40px 0;
         padding: 20px 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        scroll-margin-top: 0;
         box-sizing: border-box;
-        overflow-y: hidden;
-    }
-    
-    /* Constrain media-block to fit within content section */
-    .content-section .media-block {
-        max-height: calc(100vh - 40px); /* Account for section padding (20px top + 20px bottom) */
-        margin: 0;
-        overflow: hidden;
-    }
-    
-    .content-section .media-block .content {
-        max-height: 100%;
-        overflow-y: auto;
-    }
-    
-    .content-section .media-block .media {
-        max-height: 100%;
-        overflow: hidden;
     }
 }
 
-/* Desktop: Add snap alignment for snap scrolling above 900px */
-@media (min-width: 901px) {
-    .content-section {
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-    }
-    
-    /* Horizontal subsection containers */
-    .subsection-container {
-        width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        box-sizing: border-box;
-        overflow: hidden;
-        position: relative;
-        /* Prevent any overflow that could cause scrollbar */
-        min-height: 0;
-    }
-    
-    /* Ensure exact viewport height - prevent subpixel rounding issues */
-    .subsection-container {
-        height: 100vh;
-        max-height: 100vh;
-    }
-    
-    .subsection-wrapper {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Hide scrollbar */
-        -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    .subsection-wrapper::-webkit-scrollbar {
-        display: none; /* Hide scrollbar Chrome/Safari */
-    }
-    
-    .subsection-container .subsection {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
-        height: 100vh;
-        max-height: 100vh;
-        flex-shrink: 0;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
-        margin: 0;
-        padding: 20px 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        box-sizing: border-box;
-        overflow-y: auto;
-        overflow-x: hidden;
-        min-height: 0;
-        /* Ensure scrollbar doesn't add to height - use overlay scrollbar */
-        scrollbar-width: thin;
-        scrollbar-gutter: stable;
-    }
-    
-    /* Ensure media-block and content fit within subsection bounds */
-    .subsection-container .subsection .media-block {
-        max-height: calc(100vh - 40px); /* Account for subsection padding (20px top + 20px bottom) */
-        margin: 0 !important;
-        overflow: hidden;
-        min-height: 0;
-    }
-    
-    .subsection-container .subsection .media-block .content {
-        max-height: 100%;
-        overflow-y: auto;
-        min-height: 0;
-    }
-    
-    .subsection-container .subsection .media-block .media {
-        max-height: 100%;
-        overflow: visible;
-        min-height: 0;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        background: transparent !important;
-    }
-    
-    .subsection-container .subsection .media-block .media img {
-        max-height: 100%;
-        object-fit: contain;
-        border-radius: 12px;
-        box-shadow: 0 4px 16px rgba(0,0,0,.12);
-        display: block;
-    }
-    
-    /* Add padding to image container in work-1 (What We Do) subsection */
-    .subsection-container .subsection#work-1 .media-block .media {
-        padding: 20px;
-    }
-    
-    .subsection-container .subsection#work-1 .media-block .media img {
-        padding: 0 !important;
-    }
-    
-    /* Hide scrollbar but allow scrolling */
-    .subsection-container .subsection::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    .subsection-container .subsection::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    
-    .subsection-container .subsection::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
-    }
-    
-    .subsection-container .subsection::-webkit-scrollbar-thumb:hover {
-        background: rgba(0, 0, 0, 0.3);
-    }
-}
 
 /* At 701-900px: Non-subsection sections should be centered and use available width */
 @media (min-width: 701px) and (max-width: 900px) {
@@ -291,96 +152,6 @@ main {
     }
 }
 
-/* Mobile/Tablet: Subsections should appear as one continuous section (original behavior) */
-@media (max-width: 900px) {
-    /* Reset horizontal container behavior on mobile */
-    .subsection-container {
-        display: block !important;
-        height: auto !important;
-        overflow: visible !important;
-        scroll-snap-align: none !important;
-    }
-    
-    .subsection-wrapper {
-        display: block !important;
-        flex-direction: column !important;
-        overflow-x: visible !important;
-        overflow-y: visible !important;
-        scroll-snap-type: none !important;
-        width: 100% !important;
-        height: auto !important;
-    }
-    
-    .subsection-container .subsection {
-        width: auto !important;
-        min-width: auto !important;
-        max-width: 95% !important;
-        height: auto !important;
-        flex-shrink: 1 !important;
-        margin: 0 auto !important;
-        padding: 20px 0 !important;
-        display: block !important;
-        overflow: visible !important;
-        scroll-snap-align: none !important;
-    }
-    
-    .subsection {
-        margin: 0 auto !important;
-        padding: 20px 0 !important;
-        max-width: 95% !important;
-        height: auto !important;
-        display: block !important;
-        overflow: visible !important;
-    }
-    
-    /* Ensure first subsection image is visible on mobile/tablet */
-    /* Don't override grid-template-columns - let 900px media query handle single column layout */
-    .subsection[data-section="about"]:first-of-type .media,
-    .subsection[data-section="work"]:first-of-type .media {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    .subsection[data-section="about"]:first-of-type .media img,
-    .subsection[data-section="work"]:first-of-type .media img {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        /* Don't override transform - let 900px media query rotate it */
-        /* Don't override max-width - let 900px media query set it to 60% */
-    }
-    
-    /* Hide duplicate h2 on subsections 2+ on mobile/tablet */
-    .subsection[data-section="about"]:not(:first-of-type) h2,
-    .subsection[data-section="work"]:not(:first-of-type) h2 {
-        display: none;
-    }
-    
-    /* Hide images in subsections 2+ on mobile/tablet - only show image in first subsection */
-    .subsection[data-section="about"]:not(:first-of-type) .media,
-    .subsection[data-section="work"]:not(:first-of-type) .media {
-        display: none !important;
-    }
-    
-    /* Make content span full width when image is hidden on mobile/tablet */
-    .subsection[data-section="about"]:not(:first-of-type) .media-block,
-    .subsection[data-section="work"]:not(:first-of-type) .media-block {
-        grid-template-columns: 1fr !important;
-    }
-    
-    .subsection[data-section="about"]:not(:first-of-type) .content,
-    .subsection[data-section="work"]:not(:first-of-type) .content {
-        width: 100% !important;
-    }
-    
-    /* Remove top margin/padding from subsequent subsections to make them continuous */
-    .subsection[data-section="about"]:not(:first-of-type),
-    .subsection[data-section="work"]:not(:first-of-type) {
-        margin-top: -40px !important;
-        padding-top: 0 !important;
-    }
-}
 
 .content-section.visible {
     opacity: 1;
@@ -389,7 +160,165 @@ main {
 }
 
 #home {
-    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Home Hero Background Section - Side by side layout */
+.home-hero-background {
+    position: relative;
+    padding: 0;
+    padding-bottom: 40px;
+    margin: 0;
+    overflow: visible;
+    min-height: 450px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.home-hero-background::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 450px;
+    height: calc(100vw - 200px);
+    transform: translate(-50%, -50%) rotate(-90deg);
+    background-image: url('./NeuoNur Website Photos-20250816T000453Z-1-001/NeuoNur Website Photos/(16).jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.25;
+    z-index: 0;
+}
+
+@media (max-width: 700px) {
+    main:has(#home) {
+        padding: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    #home.content-section {
+        padding: 0 !important;
+        padding-top: 0 !important;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .home-hero-background {
+        flex-shrink: 0;
+        height: 350px;
+        margin: 0 !important;
+        padding-top: 100px !important;
+        flex-direction: column;
+        gap: 20px;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+    
+    .home-hero-background .home-title::after {
+        display: none;
+    }
+    
+    .home-hero-background .mission-statement {
+        text-align: center;
+    }
+    
+    .home-hero-background::before {
+        width: 350px;
+        height: 100vw;
+    }
+    
+    #home .hero-cta {
+        flex: 1;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.home-hero-background .home-title {
+    z-index: 1;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--secondary-text);
+    font-family: 'Merriweather', 'Georgia', serif;
+    text-align: left;
+    flex-shrink: 0;
+    position: relative;
+}
+
+/* Divider line after title */
+.home-hero-background .home-title::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 200px;
+    background-color: var(--borders-highlights);
+    right: -21px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Desktop: Position content */
+@media (min-width: 701px) {
+    .home-hero-background {
+        height: 450px;
+    }
+}
+
+.home-hero-background .mission-statement {
+    z-index: 1;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--secondary-text);
+    margin: 0;
+    text-align: left;
+    flex: 1;
+    max-width: 600px;
+}
+
+#home .hero-cta {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding: 0 40px;
+}
+
+/* Desktop: Layout */
+@media (min-width: 701px) {
+    #home {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        min-height: calc(100vh - 130px);
+    }
+    
+    .home-hero-background {
+        width: 100%;
+        align-self: stretch;
+        flex-shrink: 0;
+    }
+    
+    #home .hero-cta {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* Home Section Two-Column Layout (Desktop only, above 900px) */
@@ -398,11 +327,10 @@ main {
         display: flex;
         align-items: center;
         gap: 0;
-        height: 100%;
-        min-height: calc(100vh - 40px);
-        max-height: calc(100vh - 40px);
+        min-height: 600px;
         width: 100%;
         box-sizing: border-box;
+        padding: 60px 0;
     }
     
     .home-left {
@@ -510,11 +438,12 @@ main {
     margin: 40px auto;
     box-sizing: border-box;
     padding: 0 20px;
+    min-height: 400px;
 }
 
 .team-carousel-wrapper {
     flex: 1;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     display: flex;
     justify-content: center;
@@ -539,7 +468,7 @@ main {
 }
 
 /* Desktop: Active card (center) */
-@media (min-width: 901px) {
+@media (min-width: 951px) {
     .team-carousel-track {
         justify-content: center;
         align-items: center;
@@ -636,7 +565,7 @@ main {
 }
 
 /* Mobile: Vertical layout */
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .team-carousel-container {
         flex-direction: column;
         gap: 15px;
@@ -718,6 +647,8 @@ main {
     cursor: pointer;
     transition: background-color 0.2s ease;
     flex-shrink: 0;
+    z-index: 10;
+    position: relative;
 }
 
 .team-carousel-arrow:hover:not(:disabled) {
@@ -732,7 +663,7 @@ main {
 }
 
 /* Mobile: Change arrow direction */
-@media (max-width: 900px) {
+@media (max-width: 950px) {
     .team-carousel-arrow {
         padding: 10px 16px;
         font-size: 1.2rem;
@@ -816,6 +747,33 @@ main {
     
     .home-right .hero-cta {
         justify-content: center;
+    }
+    
+    /* Home Hero Background - Mobile */
+    .home-hero-background {
+        height: 380px;
+        margin: 0;
+        padding: 100px 20px 40px 20px;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    #home.content-section {
+        padding-top: 0;
+    }
+    
+    .home-hero-background .home-title {
+        font-size: 1.75rem;
+    }
+    
+    .home-hero-background .home-title::after {
+        display: none;
+    }
+    
+    .home-hero-background .mission-statement {
+        font-size: 1rem;
+        text-align: center;
+        max-width: 100%;
     }
 }
 
@@ -959,6 +917,28 @@ main {
         padding: 12px 24px;
         font-size: 1rem;
     }
+    
+    /* Home Hero Background - Small Mobile */
+    .home-hero-background {
+        height: 350px;
+        margin: 0 !important;
+        padding: 100px 0 0 0 !important;
+    }
+    
+    .home-hero-background .home-title {
+        display: none;
+        font-size: 1.4rem;
+        top: 12px;
+        left: 12px;
+    }
+    
+    .home-hero-background .mission-statement {
+        top: 60px;
+        width: 95%;
+        max-width: none;
+        font-size: 0.95rem;
+        padding: 0 12px;
+    }
 }
 
 .project-spacer {
@@ -978,6 +958,7 @@ main {
     border-bottom: 2px solid #088030;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
     overflow: visible;
+    flex-shrink: 0;
 }
 
 /* Desktop: Left sidebar navbar */
@@ -1188,6 +1169,10 @@ body {
     line-height: 1.7;
     color: var(--main-text);
     background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -1274,34 +1259,20 @@ p {
 
 .tab-content {
     position: relative;
-    overflow: hidden;
-    height: auto;
+    overflow: visible;
+    min-height: 400px;
 }
 
 .tab-panel {
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: none;
     width: 100%;
-    opacity: 0;
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
-    z-index: 1;
     background: var(--content-background);
     box-sizing: border-box;
     border-radius: 8px;
 }
 
 .tab-panel.active {
-    opacity: 1;
-    transform: translateX(0);
-    z-index: 2;
-}
-
-.tab-panel.current {
-    opacity: 1;
-    transform: translateX(0);
-    z-index: 1;
+    display: block;
 }
 
 .tab-panel ul{
@@ -1319,6 +1290,18 @@ p {
     .content-section {
         margin: 15px 0, 100px;
         padding: 20px;
+    }
+    
+    #home.content-section {
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .home-hero-background {
+        margin: 0 !important;
+        margin-top: 0 !important;
+        padding: 100px 0 0 0 !important;
     }
 
     h2 {
@@ -1433,124 +1416,17 @@ p {
         padding-top: 130px !important;
         max-width: 100% !important;
     }
-}
-
-/* Subsection Navigation Carousel */
-.subsection-carousel {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    background-color: var(--content-background);
-    border: 2px solid var(--borders-highlights);
-    border-radius: 12px;
-    padding: 12px 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    transition: all 0.4s ease, opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hide carousel on mobile/tablet */
-@media (max-width: 900px) {
-    .subsection-carousel {
-        display: none !important;
+    
+    main:has(#home) {
+        padding: 0 !important;
+        padding-top: 30px !important;
     }
+
+    
+
+    
 }
 
-.carousel-arrow {
-    background-color: var(--call-to-action-buttons);
-    color: var(--content-background);
-    border: none;
-    border-radius: 6px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease, opacity 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-    flex-shrink: 0;
-    opacity: 1;
-}
-
-.carousel-arrow:hover:not(:disabled) {
-    background-color: var(--links-accents);
-    transform: translateY(-2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.carousel-arrow:disabled {
-    background-color: #cccccc;
-    color: #888888;
-    cursor: not-allowed;
-    opacity: 0.5;
-    transition: all 0.3s ease, opacity 0.3s ease;
-}
-
-.carousel-arrow[style*="display: none"] {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    transition: all 0.3s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease, padding 0.3s ease, margin 0.3s ease;
-}
-
-.carousel-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    min-width: 120px;
-    transition: min-width 0.4s ease, width 0.4s ease;
-    overflow: hidden;
-}
-
-.carousel-arrow-vertical {
-    width: 24px;
-    height: 24px;
-    font-size: 14px;
-    padding: 0;
-    margin: 2px 0;
-}
-
-.carousel-arrow-up {
-    order: -1;
-}
-
-.carousel-arrow-down {
-    order: 1;
-}
-
-.carousel-section-name {
-    font-size: 0.85rem;
-    color: var(--secondary-text);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.carousel-subsection-name {
-    font-size: 1rem;
-    color: var(--main-text);
-    font-weight: 600;
-    transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
-    opacity: 1;
-    transform: translateY(0);
-    min-height: 1.2em;
-    text-align: center;
-}
 
 /* Contact Section Styling */
 #contact {
@@ -1677,12 +1553,13 @@ p {
 /* Footer - Mobile only */
 footer {
     display: none;
+    flex-shrink: 0;
 }
 
 @media (max-width: 700px) {
     footer {
         display: block;
-        margin-top: 30px;
+        margin-top: auto;
         padding: 20px;
         background-color: var(--navigation);
         color: #ffffff;
@@ -1729,6 +1606,13 @@ footer {
         justify-content: flex-start;
         width: 100%;
         overflow: visible;
+    }
+}
+
+/* Mobile: Hide nav-items when dropdown is active */
+@media (max-width: 840px) {
+    .nav-items:empty {
+        display: none;
     }
 }
 
@@ -1875,12 +1759,7 @@ footer {
     padding: 10px 15px;
     color: #ffffff;
     text-decoration: none;
-    border-bottom: 1px solid var(--borders-highlights);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-.dropdown-menu a:last-child {
-    border-bottom: none;
 }
 
 .dropdown-menu a:hover {
@@ -2041,7 +1920,13 @@ footer {
     }
     .media-block .media img {
         max-width: 60%;
-        transform: rotate(-90deg)
+        transform: rotate(-90deg);
+    }
+    
+    /* Keep horizontal images horizontal */
+    .media-block.keep-horizontal .media img {
+        transform: rotate(0deg);
+        max-width: 100%;
     }
     /* Content section max-width is set in earlier media query */
     .media-block .content{
@@ -2066,8 +1951,7 @@ footer {
 .events-container {
     display: flex;
     gap: 24px;
-    height: 100%;
-    max-height: calc(100vh - 120px); /* Account for section padding and h2 */
+    min-height: 400px;
 }
 
 /* Desktop: 30/70 split layout */
@@ -2344,6 +2228,67 @@ footer {
     margin-bottom: 12px;
 }
 
+/* Projects List Layout */
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 24px;
+}
+
+.project-item {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    padding: 24px;
+    background-color: var(--content-background);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.project-item:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+    transform: translateY(-2px);
+}
+
+.project-image {
+    flex: 0 0 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .1);
+}
+
+.project-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.project-content h3 {
+    margin: 0 0 8px 0;
+    color: var(--secondary-text);
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+.project-content p {
+    margin: 0;
+    line-height: 1.7;
+    color: var(--main-text);
+}
+
+/* Legacy project-preview styles (kept for backwards compatibility if needed) */
 .project-preview {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -2704,7 +2649,50 @@ html {
     }
 }
 
+@media (max-width: 950px) {
+    /* Projects List - Tablet/Small Desktop */
+    .project-image {
+        flex: 0 0 250px;
+    }
+    
+    .project-content h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 800px) {
+    /* Projects List - Mobile/Tablet Stacked */
+    .project-item {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .project-image {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    
+    .project-image img {
+        max-height: 200px;
+    }
+    
+    .learn-more-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 700px) {
+    /* Projects List - Small Mobile adjustments */
+    .project-item {
+        padding: 16px;
+    }
+}
+
 @media (max-width: 900px) {
+    
+    /* Legacy project-preview - Mobile */
     .project-preview {
         grid-template-columns: 1fr;
         gap: 16px;

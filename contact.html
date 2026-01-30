@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeuroNur Research Initiative</title>
+    <title>Contact - NeuroNur Research Initiative</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/NNlogo.png">
 
@@ -44,15 +44,25 @@
         </div>
     </nav>
     <main>
-        <!-- Home Section -->
-        <section id="home" class="content-section">
-            <div class="home-hero-background">
-                <h2 class="home-title">NeuroNur</h2>
-                <p class="mission-statement">NeuroNur is a global, volunteer-based initiative committed to advancing neuroscience research by fostering collaboration, communication, and knowledge-sharing across borders. Our platform empowers scientists, researchers, students, and professionals from all backgrounds to connect, co-design studies, and contribute meaningfully to the field.</p>
+        <!-- Contact Section -->
+        <section id="contact" class="content-section">
+            <h2>Contact</h2>
+            <p>Questions? Reach out to: <a href="mailto:team@neuronur.org">team@neuronur.org</a></p>
+            
+            <form>
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="name" required>
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="success-message" style="display: none; color: green; margin-top: 10px;">
+                Thank you! Your message has been sent successfully.
             </div>
-            <div class="hero-cta">
-                <a href="involved.html" class="cta-button">Join Us</a>
-                <a href="work.html" class="cta-button secondary">Projects</a>
+            <div id="error-message" style="display: none; color: red; margin-top: 10px;">
+                Sorry, there was an error sending your message. Please try again.
             </div>
         </section>
     </main>
@@ -67,6 +77,7 @@
         </a>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
