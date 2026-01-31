@@ -113,6 +113,41 @@ main {
     padding: 0 !important;
 }
 
+/* About page: 3-column grid that collapses to 1 */
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 24px;
+}
+
+.about-card {
+    padding: 24px;
+    background-color: var(--background);
+    border: 1px solid var(--borders-highlights);
+    border-radius: 8px;
+}
+
+.about-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.about-card p,
+.about-card ul {
+    margin: 0 0 12px 0;
+}
+
+.about-card ul {
+    padding-left: 1.2em;
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Mobile/Tablet: Increase content section width for better space usage */
 @media (max-width: 900px) {
     .content-section {
@@ -248,7 +283,7 @@ main {
     font-size: 2.8rem;
     font-weight: 700;
     margin: 0;
-    color: var(--secondary-text);
+    color: #000;
     font-family: 'Merriweather', 'Georgia', serif;
     text-align: left;
     flex-shrink: 0;
@@ -806,7 +841,7 @@ main {
 
 /* Invert text colors for home section */
 #home .home-title {
-    color: var(--secondary-text);
+    color: #000;
 }
 
 #home .mission-statement {
